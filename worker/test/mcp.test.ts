@@ -69,6 +69,10 @@ describe("tools", () => {
       expect(everything, t.name).toMatch(/bus/i);
       expect(everything, t.name).not.toMatch(/\bonly\b/i);
     }
+    // Nothing the model reads may frame the server as "trains and trams" (buses work without a mode too).
+    const everythingAnywhere = [initJson.result.instructions, initJson.result.serverInfo.title, ...tools.flatMap((t) => [t.description, ...Object.values(t.inputSchema.properties).map((p) => p.description ?? "")])].join("\n");
+    expect(everythingAnywhere).not.toMatch(/trains and trams/i);
+    expect(initJson.result.serverInfo.version).toBe("1.1.0");
     expect(find.description).toMatch(/train.*tram.*bus/i);
     expect(next.description).toMatch(/Works for buses/);
     expect(find.inputSchema.properties.mode!.description).toMatch(/always pass "bus"/i);
