@@ -1,0 +1,6 @@
+{"routes": [
+  {"route_id": 1, "route_name": "Frankston", "route_type": 0},
+  {"route_id": 2, "route_name": "Craigieburn", "route_type": 0},
+  {"route_id": 5, "route_name": "Route 58", "route_type": 1},
+  {"route_id": 100, "route_name": "Bus 200", "route_type": 2}
+]}

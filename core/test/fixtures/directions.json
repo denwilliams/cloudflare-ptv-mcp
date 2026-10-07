@@ -1,0 +1,14 @@
+{
+  "1": {"directions": [
+    {"direction_id": 10, "direction_name": "Flinders Street", "route_id": 1, "route_type": 0},
+    {"direction_id": 11, "direction_name": "Frankston", "route_id": 1, "route_type": 0}
+  ]},
+  "2": {"directions": [
+    {"direction_id": 20, "direction_name": "City (Flinders Street)", "route_id": 2, "route_type": 0},
+    {"direction_id": 21, "direction_name": "Craigieburn", "route_id": 2, "route_type": 0}
+  ]},
+  "5": {"directions": [
+    {"direction_id": 50, "direction_name": "Flinders Street", "route_id": 5, "route_type": 1},
+    {"direction_id": 51, "direction_name": "Southern Cross", "route_id": 5, "route_type": 1}
+  ]}
+}
