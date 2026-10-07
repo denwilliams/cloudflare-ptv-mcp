@@ -10,7 +10,7 @@ Similar project but stdio: https://github.com/kensantoso/ptv-mcp
 
 ## Connecting
 
-Add a custom connector in Claude with the URL `https://<host>/mcp?token=<MCP_TOKEN>`. Currently deployed at `https://ptv-mcp.lokeglobal.workers.dev` (LOKE Cloudflare account). The token is a shared secret that only exists so requests can be blocked if needed. To revoke access, set a new one (`wrangler secret put MCP_TOKEN`) and share the new URL.
+Add a custom connector in Claude with the URL `https://ptv-mcp.loke.tools/mcp?token=<MCP_TOKEN>` (deployed on the LOKE Cloudflare account as a custom domain; `workers.dev` and preview URLs are disabled). The token is a shared secret that only exists so requests can be blocked if needed. To revoke access, set a new one (`wrangler secret put MCP_TOKEN`) and share the new URL.
 
 ## Development
 

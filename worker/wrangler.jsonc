@@ -3,6 +3,10 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-10-07",
   "compatibility_flags": ["nodejs_compat"],
+  // Served only on the custom domain: workers.dev and preview URLs stay off.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "ptv-mcp.loke.tools", "custom_domain": true }],
   "kv_namespaces": [{ "binding": "PTV_CACHE" }],
   "ratelimits": [
     { "name": "MCP_LIMITER", "namespace_id": "730401", "simple": { "limit": 120, "period": 60 } },
