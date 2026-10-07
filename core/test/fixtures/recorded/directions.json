@@ -1,0 +1,897 @@
+{
+  "1": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Camberwell stopping at Riversdale, Willison, Hartwell, Burwood and Ashburton to Alamein. Connections from the city are available at Camberwell.\r\nDuring weekday peak periods, some services originate from Flinders Street and run via Richmond, East Richmond, Burnley, Hawthorn, Glenferrie and Auburn to Camberwell, before continuing to Alamein, stopping at all stations. During afternoon peak periods, some trains run via the City Loop.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central and Parliament.\r\n\r\nExceptions and Special running conditions\r\nNight Network services approximately hourly overnight on Friday and Saturday nights.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 0,
+        "direction_name": "Alamein",
+        "route_id": 1,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Alamein and run via Ashburton, Burwood, Hartwell, Willison, Riversdale, and Camberwell.   \r\nConnections to the city are available at Camberwell.  \r\nDuring weekday peak periods, trains continue from Camberwell via Auburn, Glenferrie, Hawthorn, Burnley, East   \r\nRichmond, and Richmond to Flinders Street. These trains run via the City Loop during morning peak periods.  \r\nAt other times, connections to the city are available from Camberwell. \r\n  \r\nCity stations: Parliament, Melbourne Central, Flagstaff, Southern Cross, and Flinders Street. \r\n \r\nExceptions and Special running conditions  \r\nNight Network services run approximately hourly overnight on Friday and Saturday nights.   \r\nTrains may not operate on their usual schedule during weekends, public holidays, or late at night. During these periods, some services are replaced by buses.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 1,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "2": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Flinders Street and operate via Richmond, East Richmond, Burnley, Hawthorn, Glenferrie, Auburn, Camberwell, East Camberwell, Canterbury, Chatham, Union, Box Hill, Laburnum, Blackburn, Nunawading, Mitcham, Heatherdale, Ringwood, Heathmont, Bayswater, Boronia, Ferntree Gully, Upper Ferntree Gully, Upwey, Tecoma and Belgrave.\r\nMost services run via the City Loop; weekday morning services run direct from Flinders Street.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central, Parliament.\r\n\r\nStopping patterns: Most services do not stop at East Richmond. Weekday express services stop at selected stations between Richmond and Blackburn. During these times, short services operate from Flinders Street to Blackburn, stopping all stations. Some services only go as far as Blackburn, Ringwood or Upper Ferntree Gully.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 2,
+        "direction_name": "Belgrave",
+        "route_id": 2,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Belgrave and run via Tecoma, Upwey, Upper Ferntree Gully, Ferntree Gully, Boronia, Bayswater, Heathmont, Ringwood, Heatherdale, Mitcham, Nunawading, Blackburn, Laburnum, Box Hill, Union, Chatham, Canterbury, East Camberwell, Camberwell, Auburn, Glenferrie, Hawthorn, Burnley, East Richmond, Richmond and Flinders Street.\r\nMost services run direct to Flinders Street; weekday morning services run via the City Loop.\r\n\r\nCity stations: Parliament, Melbourne Central, Flagstaff, Southern Cross and Flinders Street.\r\nStopping patterns: Most services do not stop at East Richmond. Weekday express services stop at selected stations between Blackburn and Richmond. During these times, short services from Blackburn stop all stations to the city. Some services originate at Upper Ferntree Gully, Ringwood or Blackburn.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 2,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "3": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Craigieburn and run via Roxburgh Park, Coolaroo, Broadmeadows, Jacana, Glenroy, Oak Park, Pascoe Vale, Strathmore, Glenbervie, Essendon, Moonee Ponds, Ascot Vale, Newmarket, Kensington, North Melbourne and Southern Cross to Flinders Street.\r\n\r\nCity stations: Flagstaff, Melbourne Central, Parliament, Flinders Street and Southern Cross.\r\nStopping patterns: All services stop at all stations. Some services originate at Broadmeadows. Weekday morning and weekend services operate to Flinders Street via the City Loop. Weekday afternoon services operate to Flinders Street via Southern Cross.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 3,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street and run via Southern Cross, North Melbourne, Kensington, Newmarket, Ascot Vale, Moonee Ponds, Essendon, Glenbervie, Strathmore, Pascoe Vale, Oak Park, Glenroy, Jacana, Broadmeadows, Coolaroo and Roxburgh Park to Craigieburn.\r\n\r\nCity stations: Southern Cross, Flinders Street, Parliament, Melbourne Central and Flagstaff.\r\nStopping patterns: All services stop at all stations. Some services only go as far as Broadmeadows.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 4,
+        "direction_name": "Craigieburn",
+        "route_id": 3,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "4": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Cranbourne stopping at Merinda Park, Lynbrook, Dandenong, Yarraman, Noble Park, Sandown Park, Springvale, Westall, Clayton, Huntingdale, Oakleigh, Hughesdale, Murrumbeena, Carnegie, Caulfield, Malvern, Anzac and Town Hall. Services continue past Town Hall to Sunbury.\r\n\r\nMetro Tunnel stations: Anzac, Town Hall, State Library, Parkville and Arden.\r\nAll trains to and from the city travel through the Metro Tunnel.\r\n\r\nStopping patterns: All trains run express between Malvern and Anzac. Some services originate from Westall or Dandenong.\r\n\r\nExceptions and Special running conditions\r\nNight Network run approximately hourly overnight on Friday and Saturday nights. These do not stop at Anzac, State Library, Parkville or Arden.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 4,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Town Hall stopping at Anzac, Malvern, Caulfield, Carnegie, Murrumbeena, Hughesdale, Oakleigh, Huntingdale, Clayton, Westall, Springvale, Sandown Park, Noble Park, Yarraman, Dandenong, Lynbrook, Merinda Park and Cranbourne.\r\n\r\nMetro Tunnel stations: Anzac, Town Hall, State Library, Parkville, and Arden.  \r\nAll trains to and from the city travel through the Metro Tunnel.  \r\n\r\nStopping patterns: All trains run express between Malvern and Anzac. Some services originate from Westall or Dandenong.\r\n\r\nExceptions and Special running conditions\r\nNight Network run approximately hourly overnight on Friday and Saturday nights. These do not stop at Anzac, State Library, Parkville or Arden.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 3,
+        "direction_name": "Cranbourne",
+        "route_id": 4,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "5": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Mernda, stopping at Hawkstowe, Middle Gorge, South Morang, Epping, Lalor, Thomastown, Keon Park, Ruthven, Reservoir, Regent, Preston, Bell, Thornbury, Croxton, Northcote, Merri, Rushall, Clifton Hill, Victoria Park, Collingwood, North Richmond, West Richmond, Jolimont and Flinders Street then via the city loop.\r\n\r\nStopping patterns: Most trains stop all stations. Some services may run express for part of the journey, particularly between Victoria Park and Jolimont.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 5,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street to Southern Cross via city loop, stopping at Jolimont, West Richmond, North Richmond, Collingwood, Victoria Park, Clifton Hill, Rushall, Merri, Northcote, Croxton, Thornbury, Bell, Preston, Regent, Reservoir, Ruthven, Keon Park, Thomastown, Lalor, Epping, South Morang, Middle Gorge, Hawkstowe and Mernda.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central and Parliament.\r\n\r\nCity Loop: Except for Night Network trains, all trains currently travel through the City Loop from Flinders Street.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 9,
+        "direction_name": "Mernda",
+        "route_id": 5,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "6": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Frankston and operate via Kananook, Seaford, Carrum, Bonbeach, Chelsea, Edithvale, Aspendale, Mordialloc, Parkdale, Mentone, Cheltenham, Southland, Highett, Moorabbin, Patterson, Bentleigh, McKinnon, Ormond, Glen Huntly, Caulfield, Malvern, Armadale, Toorak, Hawksburn, South Yarra, Richmond to Flinders Street.\r\nMost trains stop all stations; express services operate during weekday peaks.\r\n\r\nCity stations: Parliament, Melbourne Central, Flagstaff, Southern Cross and Flinders Street.\r\nCity Loop: Services to Flinders Street run from Parliament. Services from Flinders Street operate direct to Richmond.\r\n\r\nStopping patterns: During weekday peak periods, some selected express services run as follows:\r\nMorning peak (to city): Express from Cheltenham to Caulfield, then Malvern, South Yarra, Richmond and via the City Loop to Flinders Street.\r\nAfternoon peak (to Frankston): Depart Flinders Street, express to Caulfield, then express to Cheltenham, continuing all stations to Frankston.\r\n\r\nExact Stopping patterns may vary between peak periods and specific services, so passengers should check the timetable for individual train stopping arrangements.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 6,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street and run via Richmond, South Yarra, Hawksburn, Toorak, Armadale, Malvern, Caulfield, Glen Huntly, Ormond, McKinnon, Bentleigh, Patterson, Moorabbin, Highett, Southland, Cheltenham, Mentone, Parkdale, Mordialloc, Aspendale, Edithvale, Chelsea, Bonbeach, Carrum, Seaford and Kananook to Frankston.\r\nMost stop all stations; express services operate during weekday peaks.\r\n\r\nCity stations: Parliament, Melbourne Central, Flagstaff, Southern Cross and Flinders Street.\r\n\r\nCity Loop: Services to Flinders Street run from Parliament. Services from Flinders Street run direct to Richmond.\r\n\r\nStopping patterns: During weekday peak periods, some selected express services run as follows:\r\nMorning peak (to city): Express from Cheltenham to Caulfield, then Malvern, South Yarra, Richmond and via the City Loop to Flinders Street.\r\nAfternoon peak (to Frankston): Depart Flinders Street, express to Caulfield, then express to Cheltenham, continuing all stations to Frankston.\r\n\r\nExact stopping patterns may vary between peak periods and specific services, so passengers should check the timetable for individual train stopping arrangements.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 5,
+        "direction_name": "Frankston",
+        "route_id": 6,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "7": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Glen Waverley and run via, Syndal, Mount Waverley, Jordanville, Holmesglen, East Malvern, Darling, Glen Iris, Gardiner, Tooronga, Kooyong, Heyington, Burnley, East Richmond and Richmond to Flinders Street.\r\nAll services run direct to Flinders Street and then via city loop.\r\n\r\nStopping patterns: Most services stop at all stations. A limited number of services do not stop at East Richmond. A few services operate express between Richmond and Darling.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 7,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street and run via Richmond, East Richmond, Burnley, Heyington, Kooyong, Tooronga, Gardiner, Glen Iris, Darling, East Malvern, Holmesglen, Jordanville, Mount Waverley and Syndal to Glen Waverley.\r\nMost services run via the City Loop; weekday morning services run direct from Flinders Street.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central, Parliament.\r\n\r\nStopping patterns: Most services stop at all stations. A limited number of services do not stop at East Richmond. A few services operate express between Richmond and Darling.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 6,
+        "direction_name": "Glen Waverley",
+        "route_id": 7,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "8": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Hurstbridge, stopping at Wattle Glen, Diamond Creek, Eltham, Montmorency, Greensborough, Watsonia, Macleod, Rosanna, Heidelberg, Eaglemont, Ivanhoe, Darebin, Alphington, Fairfield, Dennis, Westgarth, Clifton Hill, Victoria Park, Collingwood, North Richmond, West Richmond, Jolimont and Flinders Street and via the city loop\r\n\r\nStopping patterns: Most trains stop all stations. Many peak services run express between Clifton Hill and Jolimont. Some peak services to and from Hurstbridge also run express between Heidelberg and Ivanhoe and Clifton Hill. Many services terminate at Eltham or Greensborough rather than running the full line.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 8,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street to Southern Cross via city loop, stopping at Jolimont, West Richmond, North Richmond, Collingwood, Victoria Park, Clifton Hill, Westgarth, Dennis, Fairfield, Alphington, Darebin, Ivanhoe, Eaglemont, Heidelberg, Rosanna, Macleod, Watsonia, Greensborough, Montmorency, Eltham, Diamond Creek, Wattle Glen and Hurstbridge.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central and Parliament.\r\nCity Loop: Except for Night Network trains, all trains travel through the City Loop from Flinders Street.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 7,
+        "direction_name": "Hurstbridge",
+        "route_id": 8,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "9": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Lilydale, stopping at Mooroolbark, Croydon, Ringwood East, Ringwood, Heatherdale, Mitcham, Nunawading, Blackburn, Laburnum, Box Hill, Union, Chatham, Canterbury, East Camberwell, Camberwell, Auburn, Glenferrie, Hawthorn, Burnley, East Richmond, Richmond and Flinders Street.\r\n\r\nCity stations: Parliament, Melbourne Central, Flagstaff, Southern Cross and Flinders Street.\r\n\r\nStopping patterns: Most services do not stop at East Richmond. Weekday express services stop at selected stations between Blackburn and Richmond. During these times, short services from Blackburn stop all stations to the city. Some trains originate at Mooroolbark, Ringwood or Blackburn.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 9,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street, stopping at Richmond, East Richmond, Burnley, Hawthorn, Glenferrie, Auburn, Camberwell, East Camberwell, Canterbury, Chatham, Union, Box Hill, Laburnum, Blackburn, Nunawading, Mitcham, Heatherdale, Ringwood, Ringwood East, Croydon, Mooroolbark and Lilydale.\r\n\r\nCity stations: Flinders Street, Southern Cross, Flagstaff, Melbourne Central, Parliament.\r\n\r\nStopping patterns: Most services do not stop at East Richmond. Weekday express services stop at selected stations between Richmond and Blackburn. During these times, short services operate from Flinders Street to Blackburn, stopping all stations. Some trains only go as far as Blackburn, Ringwood or Mooroolbark.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 8,
+        "direction_name": "Lilydale",
+        "route_id": 9,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "11": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart East Pakenham stopping at Pakenham, Cardinia Road, Officer, Beaconsfield, Berwick, Narre Warren, Hallam, Dandenong, Yarraman, Noble Park, Sandown Park, Springvale, Westall, Clayton, Huntingdale, Oakleigh, Hughesdale, Murrumbeena, Carnegie, Caulfield, Malvern, Anzac and Town Hall. Services continue past Town Hall to Sunbury.\r\n\r\nMetro Tunnel stations: Anzac, Town Hall, State Library, Parkville and Arden. All trains travel through the Metro Tunnel.\r\n\r\nStopping patterns: All services run express between Anzac and Malvern. During weekday peak periods trains do not stop at Westall or Yarraman. Some short-run services operate between Town Hall and Westall or Dandenong.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 11,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Town Hall, stopping at Anzac, Malvern, Caulfield, Carnegie, Murrumbeena, Hughesdale, Oakleigh, Huntingdale, Clayton, Westall, Springvale, Sandown Park, Noble Park, Yarraman, Dandenong, Hallam, Narre Warren, Berwick, Beaconsfield, Officer, Cardinia Road, Pakenham and East Pakenham.\r\n\r\nMetro Tunnel stations: Anzac, Town Hall, State Library, Parkville and Arden. All trains travel through the Metro Tunnel.\r\n\r\nStopping patterns: All services run express between Anzac and Malvern. During weekday peak periods trains do not stop at Westall or Yarraman. Some short-run services operate between Town Hall and Westall or Dandenong.\r\n\r\nExceptions and Special running conditions\r\nNight Network services run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 10,
+        "direction_name": "Pakenham",
+        "route_id": 11,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "12": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Sandringham, stopping at Hampton, Brighton Beach, Middle Brighton, North Brighton, Gardenvale, Elsternwick, Ripponlea, Balaclava, Windsor, Prahran, South Yarra, Richmond and Flinders Street. Most services continue past Flinders Street to Werribee, Laverton or Williamstown.\r\n\r\nStopping patterns: All trains stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 12,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street, stopping at Richmond, South Yarra, Prahran, Windsor, Balaclava, Ripponlea, Elsternwick, Gardenvale, North Brighton, Middle Brighton, Brighton Beach, Hampton and Sandringham.\r\n\r\nStopping patterns: All trains stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 12,
+        "direction_name": "Sandringham",
+        "route_id": 12,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "13": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Stony Point, stopping at Crib Point, Morradoo, Bittern, Hastings, Tyabb, Somerville, Baxter, Leawarra and Frankston.\r\n\r\nService Information\r\nThis is a diesel-hauled service that operates between Frankston and Stony Point, connecting with suburban electric services at Frankston. Services are less frequent than electrified suburban lines and run approximately every 2 hours, with limited evening services.\r\n\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 5,
+        "direction_name": "Frankston",
+        "route_id": 13,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Frankston, stopping at Leawarra, Baxter, Somerville, Tyabb, Hastings, Bittern, Morradoo, Crib Point and Stony Point.\r\n\r\nService Information\r\nThis is a diesel-hauled service that operates between Frankston and Stony Point, connecting with suburban electric services at Frankston. Services are less frequent than electrified suburban lines and run approximately every 2 hours, with limited evening services.\r\n\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 13,
+        "direction_name": "Stony Point",
+        "route_id": 13,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "14": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Sunbury, stopping at Diggers Rest, Watergardens, Keilor Plains, St Albans, Ginifer, Albion, Sunshine, Tottenham, West Footscray, Middle Footscray, Footscray, Arden, Parkville, State Library and Town Hall. Services continue past Town Hall to Cranbourne or Pakenham.\r\n\r\nMetro Tunnel stations: Anzac town Hall, State Library, Parkville, Arden.\r\nAll services run via the metro tunnel.\r\n\r\nStopping patterns: Most trains stop all stations. Weekday peak services may operate express between Sunshine, West Footscray and Footscray. Many services terminate at Watergardens or West Footscray rather than running the full line.\r\n\r\nExceptions and Special running conditions\r\nNight Network run approximately hourly overnight on Friday and Saturday nights. Services do not stop at Anzac, State Library, Parkville or Arden.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 14,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Town Hall, stopping at State Library, Parkville, Arden, Footscray, Middle Footscray, West Footscray, Tottenham, Sunshine, Albion, Ginifer, St Albans, Keilor Plains, Watergardens, Diggers Rest and Sunbury.\r\n\r\nMetro Tunnel stations: Anzac town Hall, State Library, Parkville, Arden.\r\nAll services run via the metro tunnel.\r\n\r\nStopping patterns: Most trains stop all stations. Weekday peak services may operate express between Sunshine, West Footscray and Footscray. Many services terminate at Watergardens or West Footscray rather than running the full line.\r\n\r\nExceptions and Special running conditions\r\nNight Network run approximately hourly overnight on Friday and Saturday nights. Services do not stop at Anzac, State Library, Parkville or Arden.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 14,
+        "direction_name": "Sunbury",
+        "route_id": 14,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "15": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Upfield, stopping at Gowrie, Fawkner, Merlynston, Batman, Coburg, Moreland, Anstey, Brunswick, Jewell, Royal Park, Flemington Bridge, Macaulay, North Melbourne, Southern Cross and Flinders Street.\r\n\r\nCity stations: Flagstaff, Melbourne Central, Parliament, Flinders Street and Southern Cross.\r\n\r\nCity Loop: Weekday morning and weekend services operate to Flinders Street via the City Loop. Weekday afternoon services operate to Flinders Street via Southern Cross.\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 15,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street, stopping at Southern Cross, North Melbourne, Macaulay, Flemington Bridge, Royal Park, Jewell, Brunswick, Anstey, Moreland, Coburg, Batman, Merlynston, Fawkner, Gowrie and Upfield.\r\n\r\nCity stations: Southern Cross, Flinders Street, Parliament, Melbourne Central and Flagstaff.\r\n\r\nCity stations: Flagstaff, Melbourne Central, Parliament, Flinders Street and Southern Cross.\r\n\r\nCity Loop: Weekday morning and weekend services operate to Flinders Street via the City Loop. Weekday afternoon services operate to Flinders Street via Southern Cross.\r\n\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Services run direct to and from Flinders Street and do not run via the City Loop. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 15,
+        "direction_name": "Upfield",
+        "route_id": 15,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "16": {
+    "directions": [
+      {
+        "route_direction_description": "To City from Werribee (Weekday daytime)  \r\nTrains depart Werribee, stopping at Hoppers Crossing, Williams Landing, Aircraft, Laverton, Newport, Footscray, North Melbourne, Southern Cross and Flinders Street.\r\n\r\nTo City from Laverton (Weekday daytime)\r\nTrains depart Laverton, stopping at Westona, Altona, Seaholme, Newport, Spotswood, Yarraville, Seddon, Footscray, South Kensington, North Melbourne, Southern Cross and Flinders Street. On weekdays, many services from Laverton continue past Flinders Street to Sandringham.\r\n\r\n\r\nWeekday evenings and weekends\r\nA combined service runs, stopping all stations to and from Werribee via Seaholme, Altona and Westona.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 16,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "To Werribee (Weekday daytime)\r\nTrains depart Flinders Street, stopping at Southern Cross, North Melbourne, Footscray, Newport, Laverton, Aircraft, Williams Landing, Hoppers Crossing and Werribee.\r\n\r\nTo Laverton (Weekday daytime)\r\nTrains depart Flinders Street, stopping at Southern Cross, North Melbourne, South Kensington, Footscray, Seddon, Yarraville, Spotswood, Newport, Seaholme, Altona, Westona and Laverton.\r\n\r\nWeekday evenings and weekends\r\nA combined service runs, stopping all stations to and from Werribee via Seaholme, Altona and Westona.On weekends, most services from Werribee and Laverton continue past Flinders Street to Sandringham.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. Most services do not stop at Southern Cross.\r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 16,
+        "direction_name": "Werribee",
+        "route_id": 16,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "17": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart Williamstown, stopping at Williamstown Beach, North Williamstown, Newport, Spotswood, Yarraville, Seddon, Footscray, South Kensington, North Melbourne, Southern Cross and Flinders Street. On weekdays, most services continue past Flinders Street to Sandringham. ON weekends, all services from Williamstown end at Flinders Street.\r\nDuring evenings, services run between Williamstown and Newport only. Connections to the city are available at Newport.\r\n\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. \r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 17,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart Flinders Street, stopping at Southern Cross, North Melbourne, South Kensington, Footscray, Seddon, Yarraville, Spotswood, Newport, North Williamstown, Williamstown Beach and Williamstown.\r\nDuring evenings, services run between Newport and Williamstown only. Connections from the city are available at Newport.\r\n\r\nStopping patterns: All services stop at all stations.\r\n\r\nExceptions and Special running conditions\r\nNight Network trains run approximately hourly overnight on Friday and Saturday nights. \r\nTrains may run to altered schedules or be replaced by buses during weekends, public holidays or late at night.",
+        "direction_id": 17,
+        "direction_name": "Williamstown",
+        "route_id": 17,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "721": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Victoria Av near Beaconsfield Pde (Albert Park) and run via Victoria Av, Bridport St, Montague St, Park St, Heather St, Eastern Rd, Sturt St, Southbank Bvd, St Kilda Rd, Swanston St (City), Lygon St, Holmes St and Nicholson St to the terminus near Bell St (East Coburg).",
+        "direction_id": 0,
+        "direction_name": "East Coburg",
+        "route_id": 721,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Nicholson St near Bell St (East Coburg) and run via Nicholson St, Holmes St, Lygon St, Swanston St (City), St Kilda Rd, Southbank Bvd, Sturt St, Eastern Rd, Heather St, Park St, Montague St, Bridport St and Victoria Av to terminate near Beaconsfield Pde (Albert Park).",
+        "direction_id": 1,
+        "direction_name": "South Melbourne Beach",
+        "route_id": 721,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "722": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence at Waterfront Place (Port Melbourne) and run via the Light Rail, Clarendon St, Spencer St, Collins St (City), Macarthur St, St Vincents Plaza, Victoria Pde, Victoria St, Barkers Rd, High St, Cotham Rd and Whitehorse Rd to the terminus near Market St (Box Hill).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 2,
+        "direction_name": "Box Hill",
+        "route_id": 722,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Whitehorse Road near Market St (Box Hill) and run via Whitehorse Rd, Cotham Rd, High St, Barkers Rd, Victoria St, Victoria Pde, St Vincents Plaza, Macarthur St, Collins St (City), Spencer St, Clarendon St and the Light Rail to Waterfront Place (Port Melbourne).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 3,
+        "direction_name": "Port Melbourne",
+        "route_id": 722,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "724": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Swanston Street near Faraday Street (University of Melbourne) and run via Swanston Street (City), St Kilda Road, and Fitzroy Street to The Esplanade (St Kilda).  \r\n\r\nFrom The Esplanade (St Kilda) trams run via Carlisle Street, Balaclava Road, Hawthorn Road, Dandenong Road and Glenferrie Road to terminate near Cotham Road (Kew).",
+        "direction_id": 9,
+        "direction_name": "Kew",
+        "route_id": 724,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Glenferrie Road near Cotham Road (Kew) and run via Glenferrie Road, Dandenong Road, Hawthorn Road, Balaclava Road and Carlisle Street to The Esplanade (St Kilda). \r\n\r\nFrom The Esplanade (St Kilda) trams run via Fitzroy Street, St Kilda Road and Swanston Street (City) to near Faraday Street (University of Melbourne).",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 724,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "725": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Sydney Road near Bakers Road (Coburg North) and run via Sydney Road, Royal Parade, Elizabeth Street (City) to terminate near Flinders Street.\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 11,
+        "direction_name": "Flinders Street Station",
+        "route_id": 725,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Elizabeth Street near Flinders Street and run via Elizabeth Street (City), Royal Parade and Sydney Road to terminate near Bakers Road (Coburg North).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 10,
+        "direction_name": "North Coburg",
+        "route_id": 725,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "887": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Cordite Ave near Central Park Ave (West Maribyrnong) and run via Cordite Ave, Raleigh Rd, Maribyrnong Ro, Union Rd, Epsom Rd, Racecourse Rd, Abbotsford St, Queensberry St, Victoria St and Elizabeth St (City) to terminate near Flinders St.\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely..",
+        "direction_id": 11,
+        "direction_name": "Flinders Street Station",
+        "route_id": 887,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Elizabeth St near Flinders St (City) and run via Elizabeth St, Victoria St, Queensberry St, Abbotsford St, Racecourse Rd, Epson Rd, Union Rd, Maribyrnong Rd, Raleigh Rd and Cordite Ave to terminate near Central Park Ave (West Maribyrnong).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 18,
+        "direction_name": "West Maribyrnong",
+        "route_id": 887,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "897": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence from Elizabeth St near Flinders St (City) and run via Elizabeth St, Flemington Rd, Mt Alexander Rd, Pascoe Vale Rd, Fletcher St, Mt Alexander Rd, Keilor Rd and Matthews Ave to terminate at Airport West Shoppingtown.",
+        "direction_id": 21,
+        "direction_name": "Airport West",
+        "route_id": 897,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Matthews Ave at Airport West Shoppingtown and run via Matthews Ave, Keilor Rd, Mt Alexander Rd, Fletcher St, Pascoe Vale Rd, Mt Alexander Rd, Flemington Rd and Elizabeth St (City) to terminate near Flinders St.",
+        "direction_id": 11,
+        "direction_name": "Flinders Street Station",
+        "route_id": 897,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "909": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence from Swanston St near Faraday St(University of Melbourne) and run via Swanston St (City), St Kilda Rd (Domain Interchange), Dandenong Rd, and Hawthorn Rd to terminate near Nepean Hwy (Brighton East).",
+        "direction_id": 24,
+        "direction_name": "East Brighton",
+        "route_id": 909,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Hawthorn Rd near Nepean Hwy (Brighton East) and run via Hawthorn Rd, Dandenong Rd, St Kilda Rd (Domain Interchange), Swanston St (City) to terminate near Faraday St (University of Melbourne).",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 909,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "913": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence from Swanston St near Faraday St (University of Melbourne) and operate via Swanston St (City), St Kilda Rd (Domain Interchange), Brighton Rd, Glenhuntly Rd and Truganini Rd to terminate near Koornang Rd (Carnegie).",
+        "direction_id": 25,
+        "direction_name": "Carnegie",
+        "route_id": 913,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence from Truganini Rd near Koornang Rd (Carnegie) and run via Truganini Rd, Glenhuntly Rd, Brighton Rd, St Kilda Rd (Domain Interchange), Swanston St (City) to terminate near Faraday St (University of Melbourne).",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 913,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "940": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Riversdale Road near Elgar Road (Wattle Park) and run via Riversdale Road, Swan Street, Melbourne Park, Flinders Street (City), Wurundjeri Way, Harbour Esplanade and Docklands Drive to Waterfront City Docklands.",
+        "direction_id": 27,
+        "direction_name": "Waterfront City Docklands",
+        "route_id": 940,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Waterfront City Docklands and runs via Docklands Drive, Harbour Esplanade, Wurundjeri Way, Flinders Street (City), Melbourne Park, Swan Street and Riversdale Road to terminate near Elgar Road (Wattle Park).",
+        "direction_id": 26,
+        "direction_name": "Wattle Park",
+        "route_id": 940,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "947": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Swanston St near Faraday St (University of Melbourne) and run via Swanston St (City), St Kilda Rd (Domain Interchange), Commercial Rd, Malvern Rd and Burke Rd to terminate near Cotham Rd (Kew).",
+        "direction_id": 28,
+        "direction_name": "Camberwell",
+        "route_id": 947,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Burke Rd near Cotham Rd (Kew) and run via Burke Rd, Malvern Rd, Commercial Rd, St Kilda Rd (Domain Interchange), and Swanston St (City) to terminate near Faraday St (University of Melbourne).",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 947,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "958": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence at the Vermont South Shopping Centre near Hanover Rd (Vermont South) and run via Burwood Hiwy, Toorak Rd, Camberwell Rd, Riversdale Rd, Power St, Burwood Rd, Bridge Rd, Wellington Pde, Flinders St (City) to terminate near Marvel Stadium Docklands at the coner of Latrobe Street (City).",
+        "direction_id": 14,
+        "direction_name": "Central Pier Docklands",
+        "route_id": 958,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Harbour Esp, near Marvel Stadium Docklands at the corner of Latrobe St (City) and run via  Flinders St (City), Wellington Pde, Bridge Rd, Burwood Rd, Power St, Riversdale Rd, Camberwell Rd, Toorak Rd and Burwood Hwy to terminate at the Vermont South Shopping Centre near Hanover Road (Vermont South).",
+        "direction_id": 29,
+        "direction_name": "Vermont South",
+        "route_id": 958,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "976": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Church St near Victoria St (North Richmond) and run via Church St (Richmond) and Chapel St (Prahran) to terminate near Nepean Hwy (Balaclava).",
+        "direction_id": 31,
+        "direction_name": "Balaclava",
+        "route_id": 976,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Chapel St near Brighton Rd (Balaclava) and run via Chapel St (Prahran) and Church St (Richmond)  to terminate near Victora St (North Richmond).",
+        "direction_id": 30,
+        "direction_name": "North Richmond",
+        "route_id": 976,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1002": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Ascot Vale d near Mt Alexander Rd (Moonee Ponds) and run via Ascot Vale Rd, Maribyrnong Rd, Raleigh Rd, Wests Rd, Williamson Rd, Highpoint Shopping Centre, Rosamond Rd, River St, Gordon St, Droop St and Leeds St to terminate near Irving St (Footscray).",
+        "direction_id": 32,
+        "direction_name": "Footscray",
+        "route_id": 1002,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence from Leeds St near Irving St (Footscray) and run via Leeds St, Droop St, Gordon St, River St, Rosamond Rd, Highpoint Shopping Centre, Williamson Rd, Wests Rd, Raleigh Rd, Maribyrnong Rd, and Ascot Vale Rd to terminate near Mt Alexander Rd (Moonee Ponds).",
+        "direction_id": 33,
+        "direction_name": "Moonee Ponds",
+        "route_id": 1002,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1041": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Acland St near Barkly St (St Kilda) and run via Acland St, The Esplanade, Fitzroy St, South Melbourne Light Rail (Canterbury Rd, Ferrars St and Whiteman St), Clarendon St, Spencer St, Bourke St (City), Spring St and Nicholson St to terminate near Blyth St (East Brunswick).\r\n\r\nRelated route: 95.\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 35,
+        "direction_name": "East Brunswick",
+        "route_id": 1041,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Nicholson St near Blyth St (East Brusnswick) and run via Nicholson St, Spring St, Bourke St (City), Spencer St, Clarendon St, South Melbourne Light Rail (Whiteman St, Ferrars Str and Canterbury Rd), Fitzroy St, The Esplanade and Acland St near Barkly St (St Kilda).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 36,
+        "direction_name": "St Kilda Beach",
+        "route_id": 1041,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1083": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Swanston St near Faraday St (University of Melbourne) and run via Swanston St (City), St Kilda Rd (Domain Interchange), Dandenong Rd and Wattletree Rd to terminate near Burke Rd (Malvern East).  \r\n\r\nNOTE: Evening services commence from Dandenong Rd near Wattletree Rd.  Board Route 64 tram from Melbourne University/City and change to Route 5 at Stop 40 Wattletree Rd.",
+        "direction_id": 17,
+        "direction_name": "Malvern",
+        "route_id": 1083,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Wattletree Rd near Burke Rd (Malvern East) and run via Wattletree Rd, Dandenong Rd, St Kilda Rd (Domain Interchange) and Swanston St (City) to terminate near Faraday St (University of Melbourne).\r\n\r\nNOTE: Evening services terminate in Dandenong Rd near Orrong Rd.  Board connecting Route 64 trams for travel towards the City and Melbourne University.",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 1083,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1482": {
+    "directions": [
+      {
+        "route_direction_description": "Trains depart either Showgrounds or Flemington Racecourse only during special events at those locations. These   \r\noperate from Flemington Racecourse or Showgrounds via North Melbourne and Southern Cross to Flinders Street.  \r\n\r\nExceptions and Special running conditions  \r\nTrains on this line operate only during special events, including the Melbourne Royal Show and Spring Carnival race   \r\ndays.",
+        "direction_id": 1,
+        "direction_name": "City",
+        "route_id": 1482,
+        "route_type": 0
+      },
+      {
+        "route_direction_description": "Trains depart from either Showgrounds or Flemington Racecourse only during special events at those locations. These run from Flemington Racecourse or Showgrounds via North Melbourne and Southern Cross to Flinders Street.\r\n\r\nExceptions and Special running conditions\r\nTrains on this line run only during special events, including the Melbourne Royal Show and Spring Carnival race days.",
+        "direction_id": 11,
+        "direction_name": "Flemington Racecourse",
+        "route_id": 1482,
+        "route_type": 0
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1880": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence at St Vincents Plaza near Gisborne Street (East Melbourne) and run via Victoria Parade, Victoria Street, Latrobe Street (City) and Harbour Esplanade to terminate near Central Pier (Docklands).",
+        "direction_id": 14,
+        "direction_name": "Central Pier Docklands",
+        "route_id": 1880,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Harbour Esplanade near Central Pier (Docklands) and run via Victoria Street and Victoria Parade to terminate at St Vincents Plaza near Gisborne Street (East Melbourne).",
+        "direction_id": 13,
+        "direction_name": "St Vincents Plaza",
+        "route_id": 1880,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "1881": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Docklands Drive near Waterfront City (Docklands) and run via Harbour Esplanade, Latrobe St, Spencer St, Bourke St (City), Spring Stt, Nicholson Stt, Gertrude St, Smith St, Queens Pde, High St and Plenty Rd to terminate near McKimmies Rd (Bundoora).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 34,
+        "direction_name": "Bundoora RMIT",
+        "route_id": 1881,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Plenty Rd near McKimmies Rd (Bundoora) and run via Plenty Rd, High St, Queens Pde, Smith St, Gertrude St, Nicholson St, Spring St, Bourke St (City), Spencer St, Latrobe St, Harbour Esplanade and Docklands Dr to Waterfront City (Docklands).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 27,
+        "direction_name": "Waterfront City Docklands",
+        "route_id": 1881,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "2903": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence at Victoria Harbour near the corner of Merchant and Collins Streets and operates via Collins Street, Spring Street, Wellington Parade, Bridge Road, Church Street, High Street and Doncaster Road to terminate near Balwyn Road (North Balwyn).",
+        "direction_id": 16,
+        "direction_name": "North Balwyn",
+        "route_id": 2903,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence from Doncaster Road near Balwyn Road (North Balwyn) and run via Doncaster Road, High Street, Church Street, Bridge Road, Wellington Parade, Spring Street, Collins Street to terminate at Victoria Harbour near the corner of Merchant and Collins Streets.",
+        "direction_id": 5,
+        "direction_name": "Victoria Harbour Docklands",
+        "route_id": 2903,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "3343": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Gilbert Rd near Regent St (Preston) and run via Gilbert Rd, Miller St, St Georges Rd, Brunswick St, St Vincents Plaza, Macarthur St, Collins St (City) to Victoria Harbour Docklands.",
+        "direction_id": 5,
+        "direction_name": "Victoria Harbour Docklands",
+        "route_id": 3343,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence at Victoria Harbour Docklands and runs via Collins St (City), Macarthur St, St Vincents Plaza, Brunswick St, St Georges Rd, Miller St and Gilbert Rd to terminate near Regent St (Preston).",
+        "direction_id": 4,
+        "direction_name": "West Preston",
+        "route_id": 3343,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "8314": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence at Victoria Gardens Shopping Centre and run via Victoria St, Victoria Pde, St Vincents Plaza, Macarthur St, Collins St (City), Spencer St, Clarendon St, Albert Rd, Mills St, Danks St, Patterson St and Park St to Fitzroy St (St Kilda).\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 7,
+        "direction_name": "St Kilda (Fitzroy St)",
+        "route_id": 8314,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Park St near Fitzroy St (St Kilda) and run via Patterson St, Danks St, Mills St, Albert Rd, Clarendon St, Spencer St, Collins St (City), Macarthur St, St Vincents Plaza, Victoria Pde, Victoria St, to the terminus at Victoria Gardens Shopping Centre.\r\n\r\nTrambassadors will be present on select services on this route on Friday and Saturday nights. Our Trambassadors are friendly onboard ambassadors dedicated to helping you with your journey. They work closely with our drivers and the Network Security Team to help keep services running smoothly and safely.",
+        "direction_id": 6,
+        "direction_name": "Victoria Gardens",
+        "route_id": 8314,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "11529": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Melville Rd near Bell St (Pascoe Vale South) and run via Melville Rd, Dawson St, Grantham St, Royal Park, Flemington Rd, Peel St, William St (City), Flinders Lane, Queens Bridge St, Kings Way, Domain Rd, Park St and Toorak d to near Glenferrie Rd (Toorak).",
+        "direction_id": 20,
+        "direction_name": "Toorak",
+        "route_id": 11529,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in Toorak Rd near Glenferrie Rd (Toorak) and run via Toorak Rd, Park St, Domain Rd (Domain Interchange), Park St, Kings Way, Queens Bridge St, Market St, Flinders Lane, William St (City), Peel St, Flemington Rd, Royal Park, Grantham St, Dawson St and Melville Rd to terminate near Bell St (Pascoe Vale South).",
+        "direction_id": 19,
+        "direction_name": "West Coburg",
+        "route_id": 11529,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "11544": {
+    "directions": [
+      {
+        "route_direction_description": "Trams commence in Moreland Rd near Cameron St (Moreland Station) and run via Moreland Rd, Lygon St, Elgin St, Swanston St (City), St Kilda Rd (Domain Interchange) and High St to Malvern Rd (Glen Iris).",
+        "direction_id": 23,
+        "direction_name": "Glen Iris",
+        "route_id": 11544,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Trams commence in High St near Malvern Rd (Glen Iris) and run via High St, St Kilda Rd (Domain Interchange) and Swanston St (City), Elgin St, Lygon St and Moreland Rd to Cameron St (Moreland Station).",
+        "direction_id": 22,
+        "direction_name": "Moreland",
+        "route_id": 11544,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "15833": {
+    "directions": [
+      {
+        "route_direction_description": "Route 3 Trams commence from Swanston Street near Faraday Street and operate via Swanston Street (City), St Kilda Road (Domain Interchange), Carlisle Street, Balaclava Road, Normanby Road and Waverley Road to terminate near Darling Road (East Malvern).",
+        "direction_id": 12,
+        "direction_name": "East Malvern",
+        "route_id": 15833,
+        "route_type": 1
+      },
+      {
+        "route_direction_description": "Route 3 Trams commence at Waverley Road near Darling Road and run via Waverley Road, Normanby Road, Balaclava Road, Carlisle Street, St Kilda Road (Domain Interchange), and Swanston Street (City) to terminate near Faraday Street (University of Melbourne).",
+        "direction_id": 8,
+        "direction_name": "Melbourne University",
+        "route_id": 15833,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  },
+  "15834": {
+    "directions": [
+      {
+        "route_direction_description": "The City Circle tram service operates within Melbourne's central business district. The service operates in a circular route passing major tourist attractions, as well as linking with other tram, train and bus routes in and around Melbourne. \r\n\r\nClockwise service: Flinders Street > Harbour Esplanade > Docklands Drive > La Trobe Street > Victoria Street > Nicholson Street > Spring Street > Flinders Street.",
+        "direction_id": 15,
+        "direction_name": "City Circle",
+        "route_id": 15834,
+        "route_type": 1
+      }
+    ],
+    "status": {
+      "version": "3.0",
+      "health": 1
+    }
+  }
+}

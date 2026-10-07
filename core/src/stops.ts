@@ -25,6 +25,18 @@ interface PtvSearchResponse {
 
 const normaliseTerm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 
+/**
+ * PTV answers 403 when a search term contains / & ? or # (it decodes the path before
+ * checking the signature), and its search only matches whole words, so "Bourke St Swanston St"
+ * finds nothing. Cross-street names are split on those characters: we search on the first
+ * part and filter by the rest.
+ */
+const queryParts = (q: string) =>
+  q
+    .split(/[/&?#]+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+
 export async function searchStops(
   client: PtvClient,
   store: CacheStore,
@@ -32,7 +44,8 @@ export async function searchStops(
   query: string,
   mode?: Mode,
 ): Promise<Cached<StopMatch[]>> {
-  const term = query.trim();
+  const [term, ...others] = queryParts(query);
+  if (term === undefined) return { value: [], source: "hit" };
   const routeTypes = mode ? [ROUTE_TYPE[mode]] : [0, 1];
   const key = `search:${normaliseTerm(query)}:${mode ?? "any"}`;
   const res = await cached(
@@ -47,15 +60,20 @@ export async function searchStops(
       }),
     rt,
   );
-  const value = (res.value.stops ?? [])
+  let value = (res.value.stops ?? [])
     .filter((s): s is typeof s & { route_type: 0 | 1 } => s.route_type === 0 || s.route_type === 1)
     .map((s) => ({
       stopId: s.stop_id,
-      name: s.stop_name,
+      name: s.stop_name.trim(),
       routeType: s.route_type,
       suburb: s.stop_suburb ?? null,
       routes: (s.routes ?? []).map((r) => (r.route_number ? `Route ${r.route_number}` : r.route_name)),
     }));
+  if (others.length) {
+    const wanted = others.map((o) => o.toLowerCase());
+    const narrowed = value.filter((m) => wanted.every((w) => m.name.toLowerCase().includes(w)));
+    if (narrowed.length) value = narrowed;
+  }
   return { ...res, value };
 }
 

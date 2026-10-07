@@ -1,0 +1,753 @@
+{
+  "disruptions": {
+    "general": [],
+    "metro_train": [
+      {
+        "disruption_id": 371985,
+        "title": "Frankston Line: Buses replacing trains on Wednesday, 7 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/frankston-line-buses-replacing-trains-on-wednesday-7-october-2026",
+        "description": "Passengers are advised that due to emergency services attending to a serious incident, buses are replacing Frankston train services between Carrum and Frankston Stations.",
+        "disruption_status": "Current",
+        "disruption_type": "Part Suspended",
+        "published_on": "2026-10-07T09:33:25Z",
+        "last_updated": "2026-10-07T09:34:06Z",
+        "from_date": "2026-10-07T09:29:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 6,
+            "route_name": "Frankston",
+            "route_number": "",
+            "route_gtfs_id": "2-FKN",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#1f1f1f",
+        "display_on_board": true,
+        "display_status": true
+      },
+      {
+        "disruption_id": 371858,
+        "title": "Hurstbridge Line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/hurstbridge-line-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice-2",
+        "description": "Stations on the Hurstbridge line will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-10-05T10:11:49Z",
+        "last_updated": "2026-10-06T08:35:06Z",
+        "from_date": "2026-10-05T09:59:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 8,
+            "route_name": "Hurstbridge",
+            "route_number": "",
+            "route_gtfs_id": "2-HBE",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 371854,
+        "title": "Werribee Line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/werribeeline-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice",
+        "description": "Stations on the Werribee line will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-10-05T08:44:46Z",
+        "last_updated": "2026-10-05T08:47:30Z",
+        "from_date": "2026-10-05T08:41:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 16,
+            "route_name": "Werribee",
+            "route_number": "",
+            "route_gtfs_id": "2-WER",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 371204,
+        "title": "Werribee Line: Buses replace trains from 11.50pm to last service each night, Monday 5 October to Thursday 8 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/werribee-line-buses-replace-trains-from-11-50pm-to-last-service-each-night-monday-5-october-to-thursday-8-october-2026",
+        "description": "11.50pm to last service each night, Monday 5 October to Thursday 8 October",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Works",
+        "published_on": "2026-09-27T11:32:52Z",
+        "last_updated": "2026-10-05T12:52:21Z",
+        "from_date": "2026-10-05T12:50:00Z",
+        "to_date": "2026-10-08T16:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 16,
+            "route_name": "Werribee",
+            "route_number": "",
+            "route_gtfs_id": "2-WER",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 370077,
+        "title": "Frankston Line: No City Loop trains from 9pm to last service each night, Monday 5 October to Wednesday 7 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/frankston-line-no-city-loop-trains-from-9pm-to-last-service-each-night-monday-5-october-to-wednesday-7-october-2026",
+        "description": "Trains run direct to and from Flinders Street, not via the City Loop",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Works",
+        "published_on": "2026-09-10T21:10:31Z",
+        "last_updated": "2026-10-07T08:09:49Z",
+        "from_date": "2026-10-05T10:00:00Z",
+        "to_date": "2026-10-07T16:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 6,
+            "route_name": "Frankston",
+            "route_number": "",
+            "route_gtfs_id": "2-FKN",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": true,
+        "display_status": true
+      },
+      {
+        "disruption_id": 370072,
+        "title": "Craigieburn and Upfield lines: No City Loop trains from 9pm to last service each night,Monday 5 October to Wednesday 7 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/craigieburn-and-upfield-lines-no-city-loop-trains-from-9pm-to-last-service-each-nightmonday-5-october-to-wednesday-7-october-2026",
+        "description": "Trains run direct to and from Flinders Street, not via the City Loop",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Works",
+        "published_on": "2026-09-10T20:55:30Z",
+        "last_updated": "2026-10-07T09:37:40Z",
+        "from_date": "2026-10-05T10:00:00Z",
+        "to_date": "2026-10-07T16:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 3,
+            "route_name": "Craigieburn",
+            "route_number": "",
+            "route_gtfs_id": "2-CGB",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 15,
+            "route_name": "Upfield",
+            "route_number": "",
+            "route_gtfs_id": "2-UFD",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": true,
+        "display_status": true
+      },
+      {
+        "disruption_id": 369841,
+        "title": "Alamein, Belgrave and Lilydale lines: Buses replace trains from 8.30pm to last service each night, Monday 5 October to Wednesday 7 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/alamein-belgrave-and-lilydale-lines-buses-replace-trains-from-8-30pm-to-last-service-each-night-monday-5-october-to-wednesday-7-october-2026",
+        "description": "From 8.30pm to last service each night, Monday 5 October to Wednesday 7 October",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Works",
+        "published_on": "2026-09-08T06:15:48Z",
+        "last_updated": "2026-10-07T07:48:45Z",
+        "from_date": "2026-10-05T09:30:00Z",
+        "to_date": "2026-10-07T16:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 1,
+            "route_name": "Alamein",
+            "route_number": "",
+            "route_gtfs_id": "2-ALM",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 2,
+            "route_name": "Belgrave",
+            "route_number": "",
+            "route_gtfs_id": "2-BEG",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 9,
+            "route_name": "Lilydale",
+            "route_number": "",
+            "route_gtfs_id": "2-LIL",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": true,
+        "display_status": true
+      },
+      {
+        "disruption_id": 369839,
+        "title": "Glen Waverley Line: Buses replace trains from 8.30pm to last service each night, Monday 5 October to Wednesday 7 October 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/glen-waverley-line-buses-replace-trains-from-8-30pm-to-last-service-each-night-monday-5-october-to-wednesday-7-october-2026",
+        "description": "From 8.30pm to last service each night, Monday 5 October to Wednesday 7 October",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Works",
+        "published_on": "2026-09-08T06:07:48Z",
+        "last_updated": "2026-10-07T07:49:42Z",
+        "from_date": "2026-10-05T09:30:00Z",
+        "to_date": "2026-10-07T16:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 7,
+            "route_name": "Glen Waverley",
+            "route_number": "",
+            "route_gtfs_id": "2-GWY",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": true,
+        "display_status": true
+      },
+      {
+        "disruption_id": 369188,
+        "title": "Sandringham Line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/sandringham-line-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice",
+        "description": "Stations on the Sandringham line will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-08-29T21:55:06Z",
+        "last_updated": "2026-08-29T21:56:22Z",
+        "from_date": "2026-08-29T21:47:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 12,
+            "route_name": "Sandringham",
+            "route_number": "",
+            "route_gtfs_id": "2-SHM",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 368912,
+        "title": "Frankston Line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/frankston-line-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice",
+        "description": "Stations on the Frankston line will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-08-25T09:43:36Z",
+        "last_updated": "2026-09-09T05:07:27Z",
+        "from_date": "2026-08-25T09:13:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 6,
+            "route_name": "Frankston",
+            "route_number": "",
+            "route_gtfs_id": "2-FKN",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 367490,
+        "title": "Epping Station: Temporary car park closures from Sunday 30 August to late September 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/epping-station-temporary-car-park-closures-from-sunday-16-august-to-mid-september-2026",
+        "description": "Epping Station will be affected by temporary car space closures from Sunday 30 August to late September 2026, due to works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-08-03T01:00:39Z",
+        "last_updated": "2026-08-15T09:21:08Z",
+        "from_date": "2026-08-29T17:00:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 5,
+            "route_name": "Mernda",
+            "route_number": "",
+            "route_gtfs_id": "2-MDD",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 367477,
+        "title": "Craigieburn Line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/craigieburn-line-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice",
+        "description": "Stations on the Craigieburn line will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-08-02T11:09:47Z",
+        "last_updated": "2026-10-05T09:24:05Z",
+        "from_date": "2026-08-02T11:00:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 3,
+            "route_name": "Craigieburn",
+            "route_number": "",
+            "route_gtfs_id": "2-CGB",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 365656,
+        "title": "Mernda Station: Temporary pedestrian access changes from Monday 20 July to mid-August 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/mernda-station-temporary-pedestrian-access-changes-from-monday-6-july-to-late-july-2026",
+        "description": "Mernda Station will be affected by temporary pedestrian access changes from Monday 20 July to mid-August 2026, due to works.",
+        "disruption_status": "Current",
+        "disruption_type": "Station detour",
+        "published_on": "2026-07-01T08:48:37Z",
+        "last_updated": "2026-07-10T02:36:24Z",
+        "from_date": "2026-07-19T17:00:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 5,
+            "route_name": "Mernda",
+            "route_number": "",
+            "route_gtfs_id": "2-MDD",
+            "direction": null
+          }
+        ],
+        "stops": [
+          {
+            "stop_id": 1228,
+            "stop_name": "Mernda "
+          }
+        ],
+        "colour": "#ffbb00",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 362298,
+        "title": "Belgrave Line: Replacement bus stop relocation at Bayswater Station until Tuesday 4 August 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/belgrave-line-replacement-bus-stop-relocation-at-bayswater-station-until-late-2026",
+        "description": "Monday 11 May to Tuesday 4 August",
+        "disruption_status": "Current",
+        "disruption_type": "Station detour",
+        "published_on": "2026-05-12T02:11:45Z",
+        "last_updated": "2026-07-23T02:45:26Z",
+        "from_date": "2026-05-12T00:51:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 2,
+            "route_name": "Belgrave",
+            "route_number": "",
+            "route_gtfs_id": "2-BEG",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffbb00",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 358623,
+        "title": "Heidelberg Station: Temporary pedestrian access changes from Monday 16 March to early April 2026",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/heidelberg-station-temporary-pedestrian-access-changes-from-monday-16-march-to-early-april-2026",
+        "description": "Heidelberg Station will be affected by temporary pedestrian access changes from 7.30am to 3.30pm each day, Monday 16 March to early April, due to works.",
+        "disruption_status": "Current",
+        "disruption_type": "Station detour",
+        "published_on": "2026-03-26T06:58:56Z",
+        "last_updated": "2026-03-26T07:08:08Z",
+        "from_date": "2026-03-26T06:47:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 8,
+            "route_name": "Hurstbridge",
+            "route_number": "",
+            "route_gtfs_id": "2-HBE",
+            "direction": null
+          }
+        ],
+        "stops": [
+          {
+            "stop_id": 1093,
+            "stop_name": "Heidelberg "
+          }
+        ],
+        "colour": "#ffbb00",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 352201,
+        "title": "Mordialloc Station: Major changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/mordialloc-station-major-changes-until-further-notice-2",
+        "description": "From Thursday 21 May, the Frankston Line will have a new timetable and the temporary timetable introduced for level crossing removal works will end. There may be changes to some journeys. Check your timetable before your travel.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-01-05T05:08:23Z",
+        "last_updated": "2026-05-20T20:28:25Z",
+        "from_date": "2025-01-29T10:37:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 6,
+            "route_name": "Frankston",
+            "route_number": "",
+            "route_gtfs_id": "2-FKN",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 344824,
+        "title": "Southern Cross Station: From 8.30pm Monday 29 September 2025 until August 2026, there will be changes to the way you access and exit the station, due to escalator upgrade works.",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/page/plan-a-journey/maps/southern-cross-station-map-and-travel-information/",
+        "description": "Southern Cross Station: From 8.30pm Monday 29 September 2025 until August 2026, there will be changes to the way you access and exit the station, due to escalator upgrade works.",
+        "disruption_status": "Current",
+        "disruption_type": "Station detour",
+        "published_on": "2025-09-25T05:26:57Z",
+        "last_updated": "2026-02-10T10:00:02Z",
+        "from_date": "2025-09-25T05:13:00Z",
+        "to_date": "2026-08-31T17:00:00Z",
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 1,
+            "route_name": "Alamein",
+            "route_number": "",
+            "route_gtfs_id": "2-ALM",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 2,
+            "route_name": "Belgrave",
+            "route_number": "",
+            "route_gtfs_id": "2-BEG",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 3,
+            "route_name": "Craigieburn",
+            "route_number": "",
+            "route_gtfs_id": "2-CGB",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 6,
+            "route_name": "Frankston",
+            "route_number": "",
+            "route_gtfs_id": "2-FKN",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 7,
+            "route_name": "Glen Waverley",
+            "route_number": "",
+            "route_gtfs_id": "2-GWY",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 8,
+            "route_name": "Hurstbridge",
+            "route_number": "",
+            "route_gtfs_id": "2-HBE",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 9,
+            "route_name": "Lilydale",
+            "route_number": "",
+            "route_gtfs_id": "2-LIL",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 5,
+            "route_name": "Mernda",
+            "route_number": "",
+            "route_gtfs_id": "2-MDD",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 15,
+            "route_name": "Upfield",
+            "route_number": "",
+            "route_gtfs_id": "2-UFD",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 16,
+            "route_name": "Werribee",
+            "route_number": "",
+            "route_gtfs_id": "2-WER",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 17,
+            "route_name": "Williamstown",
+            "route_number": "",
+            "route_gtfs_id": "2-WIL",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffbb00",
+        "display_on_board": true,
+        "display_status": false
+      },
+      {
+        "disruption_id": 323905,
+        "title": "Alamein, Belgrave, Glen Waverley and Lilydale line stations: Temporary car park closures and pedestrian access changes until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/alamein-belgrave-glen-waverley-and-lilydale-line-stations-temporary-car-park-closures-and-pedestrian-access-changes-until-further-notice",
+        "description": "Stations on the Alamein, Belgrave, Glen Waverley and Lilydale lines will be affected by temporary car park closures, platform closures and changes to pedestrian access at select times, due to works as part of the Level Crossing Removal Project and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2024-10-29T04:29:05Z",
+        "last_updated": "2026-10-06T03:32:10Z",
+        "from_date": "2024-10-28T10:54:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 2,
+            "route_name": "Belgrave",
+            "route_number": "",
+            "route_gtfs_id": "2-BEG",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 9,
+            "route_name": "Lilydale",
+            "route_number": "",
+            "route_gtfs_id": "2-LIL",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 1,
+            "route_name": "Alamein",
+            "route_number": "",
+            "route_gtfs_id": "2-ALM",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 7,
+            "route_name": "Glen Waverley",
+            "route_number": "",
+            "route_gtfs_id": "2-GWY",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 278946,
+        "title": "Sunbury Line stations: Car park closures and pedestrian access changes",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/sunbury-line-stations-car-park-closures-and-pedestrian-access-changes",
+        "description": "Station precinct changes and temporary car park closures at select times",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2022-12-21T21:58:50Z",
+        "last_updated": "2026-10-05T06:25:37Z",
+        "from_date": "2026-01-14T16:00:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 14,
+            "route_name": "Sunbury",
+            "route_number": "",
+            "route_gtfs_id": "2-SUY",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      },
+      {
+        "disruption_id": 218983,
+        "title": "Cranbourne and Pakenham line stations: Temporary car park closures until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/cranbourne-and-pakenham-line-stations-temporary-car-park-closures-and-changes-to-pedestrian-access-until-2022",
+        "description": "Stations on the Cranbourne and Pakenham lines will be affected by temporary car park closures. These impacts are due to works as part of the Level Crossing Removal Project, and other maintenance works.",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2020-12-14T22:10:18Z",
+        "last_updated": "2026-09-23T08:30:21Z",
+        "from_date": "2020-12-14T21:57:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 0,
+            "route_id": 4,
+            "route_name": "Cranbourne",
+            "route_number": "",
+            "route_gtfs_id": "2-CBE",
+            "direction": null
+          },
+          {
+            "route_type": 0,
+            "route_id": 11,
+            "route_name": "Pakenham",
+            "route_number": "",
+            "route_gtfs_id": "2-PKM",
+            "direction": null
+          }
+        ],
+        "stops": [
+          {
+            "stop_id": 1139,
+            "stop_name": "Narre Warren "
+          },
+          {
+            "stop_id": 1017,
+            "stop_name": "Beaconsfield "
+          },
+          {
+            "stop_id": 1045,
+            "stop_name": "Cranbourne "
+          },
+          {
+            "stop_id": 1153,
+            "stop_name": "Pakenham "
+          },
+          {
+            "stop_id": 1123,
+            "stop_name": "Merinda Park "
+          },
+          {
+            "stop_id": 1138,
+            "stop_name": "Murrumbeena "
+          },
+          {
+            "stop_id": 1049,
+            "stop_name": "Dandenong "
+          },
+          {
+            "stop_id": 1150,
+            "stop_name": "Oakleigh "
+          },
+          {
+            "stop_id": 1208,
+            "stop_name": "Westall "
+          }
+        ],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      }
+    ],
+    "metro_tram": [
+      {
+        "disruption_id": 357172,
+        "title": "Route 58: Temporary stop closure on Kings Way until further notice",
+        "url": "http://ptv.vic.gov.au/live-travel-updates/article/route-58-temporary-stop-closure-on-kings-way-until-further-notice",
+        "description": "Two Route 58 tram stops are temporarily closed in one direction, until further notice:",
+        "disruption_status": "Current",
+        "disruption_type": "Planned Closure",
+        "published_on": "2026-03-06T03:45:00Z",
+        "last_updated": "2026-03-06T03:45:01Z",
+        "from_date": "2026-01-01T03:42:00Z",
+        "to_date": null,
+        "routes": [
+          {
+            "route_type": 1,
+            "route_id": 11529,
+            "route_name": "West Coburg - Toorak",
+            "route_number": "58",
+            "route_gtfs_id": "3-058",
+            "direction": null
+          }
+        ],
+        "stops": [],
+        "colour": "#ffd500",
+        "display_on_board": false,
+        "display_status": false
+      }
+    ],
+    "metro_bus": [],
+    "regional_train": [],
+    "regional_coach": [],
+    "regional_bus": [],
+    "school_bus": [],
+    "telebus": [],
+    "night_bus": [],
+    "ferry": [],
+    "interstate_train": [],
+    "skybus": [],
+    "taxi": []
+  },
+  "status": {
+    "version": "3.0",
+    "health": 1
+  }
+}

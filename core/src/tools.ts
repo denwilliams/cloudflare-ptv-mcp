@@ -62,7 +62,7 @@ const departuresFor = (ctx: ToolContext, routeType: 0 | 1, stopId: number) =>
     POLICIES.departures,
     () =>
       ctx.client.get<PtvDeparturesResponse>(`/v3/departures/route_type/${routeType}/stop/${stopId}`, {
-        max_results: 40,
+        max_results: 12, // PTV applies this per route and direction
         expand: ["Route", "Direction", "Run"],
       }),
     ctx.rt,

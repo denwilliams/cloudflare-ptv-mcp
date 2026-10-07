@@ -41,5 +41,6 @@ How the pieces fit together:
 - The Cache API does nothing on `*.workers.dev`; departure/disruption caching only works on a custom domain.
 - Cron triggers are UTC: `0 17 * * *` is about 3–4 am Melbourne.
 - The Rate Limiting binding is per Cloudflare location and eventually consistent.
-- Fixtures in `core/test/fixtures/` are hand-written from documented v3 shapes. Real responses go in `core/test/fixtures/recorded/` (via `scripts/record-fixtures.ts`); `core/test/recorded.test.ts` skips until that directory exists.
+- Fixtures in `core/test/fixtures/` are hand-written from documented v3 shapes. Real responses recorded on 2026-10-07 (via `scripts/record-fixtures.ts`) are in `core/test/fixtures/recorded/` and `core/test/recorded.test.ts` checks the shapers against them; re-record if PTV's shapes seem to have changed.
+- PTV v3 quirks found with the real API: a `/`, `&`, `?` or `#` in a `/v3/search/{term}` path returns 403 even when correctly signed (`searchStops` searches the first part and filters by the rest); search matches whole words only; stop names carry trailing spaces; `max_results` on departures applies per route and direction (80 came back for 40); trams are identified by `route_number` (their `route_name` is the termini); `stop_suburb` is "Melbourne City" for CBD stops.
 - Worker tests import `env` and `SELF` from `cloudflare:test` (package `@cloudflare/vitest-plugin`), and the worker's `Env` type is declared by hand in `worker/src/env.d.ts`.

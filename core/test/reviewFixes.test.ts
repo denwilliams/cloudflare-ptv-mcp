@@ -84,3 +84,14 @@ describe("Important 3: trams are identified by route number", () => {
     expect(r.text).toBe("Bourke St/Swanston St (tram) id 9: Route 96");
   });
 });
+
+describe("real-data finding: PTV max_results applies per route and direction", () => {
+  it("asks for 12 departures, not 40 (80 came back at a two-direction station)", async () => {
+    const queries: unknown[] = [];
+    const ctx = mk((p) => (p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }));
+    const get = ctx.client.get.bind(ctx.client);
+    ctx.client.get = (async (path: string, q?: unknown) => { if (path.startsWith("/v3/departures")) queries.push(q); return get(path); }) as PtvClient["get"];
+    await nextDepartures(ctx, { stop: "1007", mode: "train", direction: "50" });
+    expect(queries[0]).toMatchObject({ max_results: 12 });
+  });
+});

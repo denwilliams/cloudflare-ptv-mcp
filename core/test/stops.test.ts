@@ -21,13 +21,33 @@ function ctx(response: unknown = search) {
 }
 
 describe("findStop", () => {
-  it("URL-encodes awkward queries", async () => {
+  it("never puts / & ? # in the search path (PTV answers 403); searches on the first street instead", async () => {
     const a = ctx();
     await findStop(a.c, { query: "St Kilda Rd/Domain Rd" });
-    expect(a.paths[0]).toBe("/v3/search/St%20Kilda%20Rd%2FDomain%20Rd");
+    expect(a.paths[0]).toBe("/v3/search/St%20Kilda%20Rd");
     const b = ctx();
     await findStop(b.c, { query: "Café & Bar?" });
-    expect(b.paths[0]).toBe("/v3/search/Caf%C3%A9%20%26%20Bar%3F");
+    expect(b.paths[0]).toBe("/v3/search/Caf%C3%A9");
+    const c = ctx();
+    await findStop(c.c, { query: "/ & ?" });
+    expect(c.paths).toHaveLength(0);
+  });
+
+  it("filters a cross-street query by the other street, falling back to all results", async () => {
+    const resp = { stops: [
+      { stop_id: 1, stop_name: "Bourke St/Spring St #9", route_type: 1, routes: [] },
+      { stop_id: 2, stop_name: "Bourke St/Swanston St #8", route_type: 1, routes: [] },
+    ] };
+    const hit = await findStop(ctx(resp).c, { query: "Bourke St/Swanston St" });
+    expect(hit.text).toBe("Bourke St/Swanston St #8 (tram) id 2");
+    const miss = await findStop(ctx(resp).c, { query: "Bourke St/Nowhere St" });
+    expect(miss.text.split("\n")).toHaveLength(2);
+  });
+
+  it("trims the trailing spaces PTV leaves on stop names", async () => {
+    const resp = { stops: [{ stop_id: 3, stop_name: "Ascot Vale Rd/Maribyrnong Rd #34 ", stop_suburb: "Moonee Ponds", route_type: 1, routes: [] }] };
+    const r = await findStop(ctx(resp).c, { query: "Ascot Vale Rd" });
+    expect(r.text).toBe("Ascot Vale Rd/Maribyrnong Rd #34 (tram, Moonee Ponds) id 3");
   });
 
   it("rejects an empty query without calling PTV", async () => {

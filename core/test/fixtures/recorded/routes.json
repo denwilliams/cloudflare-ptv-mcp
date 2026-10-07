@@ -1,0 +1,500 @@
+{
+  "routes": [
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 1,
+      "route_name": "Alamein",
+      "route_number": "",
+      "route_gtfs_id": "2-ALM",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 2,
+      "route_name": "Belgrave",
+      "route_number": "",
+      "route_gtfs_id": "2-BEG",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 3,
+      "route_name": "Craigieburn",
+      "route_number": "",
+      "route_gtfs_id": "2-CGB",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 4,
+      "route_name": "Cranbourne",
+      "route_number": "",
+      "route_gtfs_id": "2-CBE",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 5,
+      "route_name": "Mernda",
+      "route_number": "",
+      "route_gtfs_id": "2-MDD",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Part Suspended",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 6,
+      "route_name": "Frankston",
+      "route_number": "",
+      "route_gtfs_id": "2-FKN",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 7,
+      "route_name": "Glen Waverley",
+      "route_number": "",
+      "route_gtfs_id": "2-GWY",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 8,
+      "route_name": "Hurstbridge",
+      "route_number": "",
+      "route_gtfs_id": "2-HBE",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 9,
+      "route_name": "Lilydale",
+      "route_number": "",
+      "route_gtfs_id": "2-LIL",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 11,
+      "route_name": "Pakenham",
+      "route_number": "",
+      "route_gtfs_id": "2-PKM",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 12,
+      "route_name": "Sandringham",
+      "route_number": "",
+      "route_gtfs_id": "2-SHM",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 13,
+      "route_name": "Stony Point",
+      "route_number": "",
+      "route_gtfs_id": "2-STY",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 14,
+      "route_name": "Sunbury",
+      "route_number": "",
+      "route_gtfs_id": "2-SUY",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 15,
+      "route_name": "Upfield",
+      "route_number": "",
+      "route_gtfs_id": "2-UFD",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 16,
+      "route_name": "Werribee",
+      "route_number": "",
+      "route_gtfs_id": "2-WER",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 17,
+      "route_name": "Williamstown",
+      "route_number": "",
+      "route_gtfs_id": "2-WIL",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 0,
+      "route_id": 1482,
+      "route_name": "Flemington Racecourse",
+      "route_number": "",
+      "route_gtfs_id": "2-RCE",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 721,
+      "route_name": "East Coburg - South Melbourne Beach",
+      "route_number": "1",
+      "route_gtfs_id": "3-001",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 722,
+      "route_name": "Box Hill - Port Melbourne",
+      "route_number": "109",
+      "route_gtfs_id": "3-109",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 724,
+      "route_name": "Melbourne University - Kew",
+      "route_number": "16",
+      "route_gtfs_id": "3-016",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 725,
+      "route_name": "North Coburg - Flinders Street Station",
+      "route_number": "19",
+      "route_gtfs_id": "3-019",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 887,
+      "route_name": "West Maribyrnong - Flinders Street Station",
+      "route_number": "57",
+      "route_gtfs_id": "3-057",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 897,
+      "route_name": "Airport West - Flinders Street Station",
+      "route_number": "59",
+      "route_gtfs_id": "3-059",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 909,
+      "route_name": "Melbourne University - East Brighton",
+      "route_number": "64",
+      "route_gtfs_id": "3-064",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 913,
+      "route_name": "Melbourne University - Carnegie",
+      "route_number": "67",
+      "route_gtfs_id": "3-067",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 940,
+      "route_name": "Waterfront City Docklands -  Wattle Park",
+      "route_number": "70",
+      "route_gtfs_id": "3-070",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 947,
+      "route_name": "Melbourne University - Camberwell",
+      "route_number": "72",
+      "route_gtfs_id": "3-072",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 958,
+      "route_name": "Vermont South - Central Pier Docklands",
+      "route_number": "75",
+      "route_gtfs_id": "3-075",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 976,
+      "route_name": "North Richmond - Balaclava",
+      "route_number": "78",
+      "route_gtfs_id": "3-078",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 1002,
+      "route_name": "Moonee Ponds - Footscray",
+      "route_number": "82",
+      "route_gtfs_id": "3-082",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 1041,
+      "route_name": "East Brunswick - St Kilda Beach",
+      "route_number": "96",
+      "route_gtfs_id": "3-096",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 1083,
+      "route_name": "Melbourne University - Malvern",
+      "route_number": "5",
+      "route_gtfs_id": "3-005",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 1880,
+      "route_name": "St Vincents Plaza - Central Pier Docklands",
+      "route_number": "30",
+      "route_gtfs_id": "3-030",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 1881,
+      "route_name": "Bundoora RMIT - Waterfront City Docklands",
+      "route_number": "86",
+      "route_gtfs_id": "3-086",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 2903,
+      "route_name": "North Balwyn - Victoria Harbour Docklands",
+      "route_number": "48",
+      "route_gtfs_id": "3-048",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 3343,
+      "route_name": "West Preston - Victoria Harbour Docklands",
+      "route_number": "11",
+      "route_gtfs_id": "3-011",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 8314,
+      "route_name": "Victoria Gardens - St Kilda(Fitzroy St)",
+      "route_number": "12",
+      "route_gtfs_id": "3-012",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 11529,
+      "route_name": "West Coburg - Toorak",
+      "route_number": "58",
+      "route_gtfs_id": "3-058",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 11544,
+      "route_name": "Moreland - Glen Iris",
+      "route_number": "6",
+      "route_gtfs_id": "3-006",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 15833,
+      "route_name": "Melbourne University - East Malvern",
+      "route_number": "3",
+      "route_gtfs_id": "3-003",
+      "geopath": []
+    },
+    {
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:54.0639951+00:00"
+      },
+      "route_type": 1,
+      "route_id": 15834,
+      "route_name": "City Circle (Free Tourist Tram)",
+      "route_number": "35",
+      "route_gtfs_id": "3-035",
+      "geopath": []
+    }
+  ],
+  "status": {
+    "version": "3.0",
+    "health": 1
+  }
+}

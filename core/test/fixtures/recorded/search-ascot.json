@@ -1,0 +1,544 @@
+{
+  "stops": [
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 0,
+      "routes": [
+        {
+          "route_name": "Craigieburn",
+          "route_number": "",
+          "route_type": 0,
+          "route_id": 3,
+          "route_gtfs_id": "2-CGB",
+          "route_service_status": {
+            "description": "Planned Works",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77531,
+      "stop_longitude": 144.921829,
+      "stop_sequence": 0,
+      "stop_id": 1009,
+      "stop_name": "Ascot Vale Station",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Moonee Ponds",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Moonee Ponds - Footscray",
+          "route_number": "82",
+          "route_type": 1,
+          "route_id": 1002,
+          "route_gtfs_id": "3-082",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7724724,
+      "stop_longitude": 144.9237,
+      "stop_sequence": 0,
+      "stop_id": 2393,
+      "stop_name": "Ascot Vale Rd/Maribyrnong Rd #34 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Airport West - Flinders Street Station",
+          "route_number": "59",
+          "route_type": 1,
+          "route_id": 897,
+          "route_gtfs_id": "3-059",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7743225,
+      "stop_longitude": 144.927826,
+      "stop_sequence": 0,
+      "stop_id": 3500,
+      "stop_name": "Bank St/Mt Alexander Rd #29 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77589,
+      "stop_longitude": 144.915558,
+      "stop_sequence": 0,
+      "stop_id": 3129,
+      "stop_name": "Bloomfield Rd/Union Rd #35 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Moonee Ponds",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Moonee Ponds - Footscray",
+          "route_number": "82",
+          "route_type": 1,
+          "route_id": 1002,
+          "route_gtfs_id": "3-082",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7700539,
+      "stop_longitude": 144.924286,
+      "stop_sequence": 0,
+      "stop_id": 2395,
+      "stop_name": "Chaucer St/Ascot Vale Rd #33 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        },
+        {
+          "route_name": "Moonee Ponds - Footscray",
+          "route_number": "82",
+          "route_type": 1,
+          "route_id": 1002,
+          "route_gtfs_id": "3-082",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77047,
+      "stop_longitude": 144.9043,
+      "stop_sequence": 0,
+      "stop_id": 3504,
+      "stop_name": "Epsom Rd/Maribyrnong Rd #40 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Airport West - Flinders Street Station",
+          "route_number": "59",
+          "route_type": 1,
+          "route_id": 897,
+          "route_gtfs_id": "3-059",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        },
+        {
+          "route_name": "City - Broadmeadows Station via Niddrie and Airport West",
+          "route_number": "959",
+          "route_type": 2,
+          "route_id": 15139,
+          "route_gtfs_id": "4-959",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.779438,
+      "stop_longitude": 144.931213,
+      "stop_sequence": 0,
+      "stop_id": 2689,
+      "stop_name": "Essendon Tram Depot/Mt Alexander Rd #27 ",
+      "stop_landmark": "Essendon Tram Depot"
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        },
+        {
+          "route_name": "Moonee Ponds - Footscray",
+          "route_number": "82",
+          "route_type": 1,
+          "route_id": 1002,
+          "route_gtfs_id": "3-082",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7714157,
+      "stop_longitude": 144.91275,
+      "stop_sequence": 0,
+      "stop_id": 2389,
+      "stop_name": "Ferguson St/Maribyrnong Rd #38 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.78596,
+      "stop_longitude": 144.9198,
+      "stop_sequence": 0,
+      "stop_id": 3137,
+      "stop_name": "Flemington Racecourse/Epsom Rd #30 ",
+      "stop_landmark": "Flemington Racecourse"
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Moonee Ponds",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Moonee Ponds - Footscray",
+          "route_number": "82",
+          "route_type": 1,
+          "route_id": 1002,
+          "route_gtfs_id": "3-082",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7724571,
+      "stop_longitude": 144.924026,
+      "stop_sequence": 0,
+      "stop_id": 2394,
+      "stop_name": "Maribyrnong Rd/Ascot Vale Rd #34 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77187,
+      "stop_longitude": 144.916061,
+      "stop_sequence": 0,
+      "stop_id": 3125,
+      "stop_name": "Maribyrnong Rd/Union Rd #37 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.78068,
+      "stop_longitude": 144.914764,
+      "stop_sequence": 0,
+      "stop_id": 3131,
+      "stop_name": "Melbourne Showgrounds/Epsom Rd #33 ",
+      "stop_landmark": "Melbourne Showgrounds"
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7803535,
+      "stop_longitude": 144.9148,
+      "stop_sequence": 0,
+      "stop_id": 3132,
+      "stop_name": "Melbourne Showgrounds/Union Rd #33 ",
+      "stop_landmark": "Melbourne Showgrounds"
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "Airport West - Flinders Street Station",
+          "route_number": "59",
+          "route_type": 1,
+          "route_id": 897,
+          "route_gtfs_id": "3-059",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        },
+        {
+          "route_name": "City - Broadmeadows Station via Niddrie and Airport West",
+          "route_number": "959",
+          "route_type": 2,
+          "route_id": 15139,
+          "route_gtfs_id": "4-959",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77746,
+      "stop_longitude": 144.92984,
+      "stop_sequence": 0,
+      "stop_id": 2694,
+      "stop_name": "Middle St/Mt Alexander Rd #28 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7761,
+      "stop_longitude": 144.91539,
+      "stop_sequence": 0,
+      "stop_id": 3128,
+      "stop_name": "Munro St/Union Rd #35 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.7826729,
+      "stop_longitude": 144.916809,
+      "stop_sequence": 0,
+      "stop_id": 3133,
+      "stop_name": "Sandown Rd/Epsom Rd #32 ",
+      "stop_landmark": ""
+    },
+    {
+      "stop_distance": 0,
+      "stop_suburb": "Ascot Vale",
+      "route_type": 1,
+      "routes": [
+        {
+          "route_name": "West Maribyrnong - Flinders Street Station",
+          "route_number": "57",
+          "route_type": 1,
+          "route_id": 887,
+          "route_gtfs_id": "3-057",
+          "route_service_status": {
+            "description": "Good Service",
+            "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+          }
+        }
+      ],
+      "stop_latitude": -37.77357,
+      "stop_longitude": 144.915939,
+      "stop_sequence": 0,
+      "stop_id": 3127,
+      "stop_name": "St Leonards Rd/Union Rd #36 ",
+      "stop_landmark": ""
+    }
+  ],
+  "routes": [
+    {
+      "route_name": "Craigieburn Line",
+      "route_number": "",
+      "route_type": 0,
+      "route_id": 3,
+      "route_gtfs_id": "2-CGB",
+      "route_service_status": {
+        "description": "Planned Works",
+        "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+      }
+    },
+    {
+      "route_name": "West Maribyrnong - Flinders Street Station",
+      "route_number": "57",
+      "route_type": 1,
+      "route_id": 887,
+      "route_gtfs_id": "3-057",
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+      }
+    },
+    {
+      "route_name": "Airport West - Flinders Street Station",
+      "route_number": "59",
+      "route_type": 1,
+      "route_id": 897,
+      "route_gtfs_id": "3-059",
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+      }
+    },
+    {
+      "route_name": "Moonee Ponds - Footscray",
+      "route_number": "82",
+      "route_type": 1,
+      "route_id": 1002,
+      "route_gtfs_id": "3-082",
+      "route_service_status": {
+        "description": "Good Service",
+        "timestamp": "2026-10-07T11:03:56.7731507+00:00"
+      }
+    }
+  ],
+  "outlets": [
+    {
+      "outlet_distance": 0,
+      "outlet_slid_spid": "1393",
+      "outlet_name": "3 Kent Street",
+      "outlet_business": "Ascot Market",
+      "outlet_latitude": -37.7811,
+      "outlet_longitude": 144.932,
+      "outlet_suburb": "Ascot Vale",
+      "outlet_postcode": 3032,
+      "outlet_business_hour_mon": null,
+      "outlet_business_hour_tue": null,
+      "outlet_business_hour_wed": null,
+      "outlet_business_hour_thur": null,
+      "outlet_business_hour_fri": null,
+      "outlet_business_hour_sat": null,
+      "outlet_business_hour_sun": null,
+      "outlet_notes": null
+    },
+    {
+      "outlet_distance": 0,
+      "outlet_slid_spid": "20039",
+      "outlet_name": "Station Avenue",
+      "outlet_business": "Ascot Vale Station",
+      "outlet_latitude": -37.7753,
+      "outlet_longitude": 144.9218,
+      "outlet_suburb": "Ascot Vale",
+      "outlet_postcode": 3032,
+      "outlet_business_hour_mon": null,
+      "outlet_business_hour_tue": null,
+      "outlet_business_hour_wed": null,
+      "outlet_business_hour_thur": null,
+      "outlet_business_hour_fri": null,
+      "outlet_business_hour_sat": null,
+      "outlet_business_hour_sun": null,
+      "outlet_notes": null
+    }
+  ],
+  "status": {
+    "version": "3.0",
+    "health": 1
+  }
+}
