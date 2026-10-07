@@ -8,7 +8,7 @@ export default {
     const url = new URL(request.url);
     if (url.pathname !== "/mcp") return new Response("Not found", { status: 404 });
 
-    if (!(await tokenValid(url, env.MCP_TOKEN))) {
+    if (!(await tokenValid(url, env.MCP_TOKEN, request.headers))) {
       console.log(JSON.stringify({ event: "unauthorized", path: redactedPath(url) }));
       return new Response("Unauthorized", { status: 401 });
     }

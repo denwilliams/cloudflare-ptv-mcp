@@ -29,6 +29,20 @@ describe("access", () => {
   });
 });
 
+describe("x-api-key header", () => {
+  const post = (path: string, extra: Record<string, string>) =>
+    SELF.fetch(`${base}${path}`, { method: "POST", headers: { ...headers, ...extra }, body: JSON.stringify(init) });
+  it("is accepted instead of ?token=", async () => {
+    expect((await post("/mcp", { "x-api-key": "test-token" })).status).toBe(200);
+  });
+  it("401s when the header is wrong", async () => {
+    expect((await post("/mcp", { "x-api-key": "nope" })).status).toBe(401);
+  });
+  it("does not make a wrong header block a valid ?token=", async () => {
+    expect((await post("/mcp?token=test-token", { "x-api-key": "nope" })).status).toBe(200);
+  });
+});
+
 describe("tools", () => {
   afterEach(() => vi.restoreAllMocks());
 
@@ -48,6 +62,16 @@ describe("tools", () => {
     expect(logged).toContain('"tool":"find_stop"');
     expect(logged).not.toContain("test-token");
     expect(logged).not.toContain("token=");
+  });
+
+  it("never logs a token sent in the header either", async () => {
+    const spy = vi.spyOn(console, "log");
+    const res = await SELF.fetch(`${base}/mcp`, { method: "POST", headers: { ...headers, "x-api-key": "test-token" }, body: JSON.stringify({ jsonrpc: "2.0", id: 5, method: "tools/call", params: { name: "find_stop", arguments: { query: " " } } }) });
+    expect(res.status).toBe(200);
+    expect(spy.mock.calls.map((c) => c.join(" ")).join("\n")).not.toContain("test-token");
+    const bad = await SELF.fetch(`${base}/mcp`, { method: "POST", headers: { ...headers, "x-api-key": "wrong-secret" }, body: "{}" });
+    expect(bad.status).toBe(401);
+    expect(spy.mock.calls.map((c) => c.join(" ")).join("\n")).not.toContain("wrong-secret");
   });
 
   it("logs the PTV status (and still no URL) when PTV rejects the credentials", async () => {

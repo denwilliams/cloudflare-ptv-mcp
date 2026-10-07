@@ -37,7 +37,7 @@ How the pieces fit together:
 
 ## Gotchas
 
-- Access control is a shared `?token=` query parameter checked in constant time against `MCP_TOKEN`; rotate the secret to block everyone. Never log the token, the query string, signed PTV URLs, `devid`, or tool arguments. Errors from the PTV client deliberately contain no URL.
+- Access control is a shared secret checked in constant time against `MCP_TOKEN`, accepted as either an `x-api-key` header or a `?token=` query parameter (either one valid is enough); rotate the secret to block everyone. Never log the token, the header, the query string, signed PTV URLs, `devid`, or tool arguments. Errors from the PTV client deliberately contain no URL.
 - Deployed at `https://ptv-mcp.loke.tools/mcp` (custom domain route in `worker/wrangler.jsonc`; `workers_dev` and `preview_urls` are off). The Cache API does nothing on `*.workers.dev`, so departure/disruption caching relies on the custom domain.
 - A cold `city_routes` build is ~42 PTV calls (one routes call plus one directions call per route). The nightly cron keeps it warm; after a first deploy or a KV expiry the first request pays for it, which can hit the 50-subrequest cap on the Workers free plan.
 - Cron triggers are UTC: `0 17 * * *` is about 3–4 am Melbourne.

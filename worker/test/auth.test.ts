@@ -18,6 +18,26 @@ describe("tokenValid", () => {
   it("rejects a token that is a prefix of the real one", async () => expect(await tokenValid(u("?token=ab"), "abc")).toBe(false));
 });
 
+describe("tokenValid with the x-api-key header", () => {
+  const h = (v: string) => new Headers({ "x-api-key": v });
+  it("accepts the correct header with no query token", async () =>
+    expect(await tokenValid(u(""), "abc", h("abc"))).toBe(true));
+  it("rejects a wrong header with no query token", async () =>
+    expect(await tokenValid(u(""), "abc", h("abd"))).toBe(false));
+  it("accepts either credential when the other is wrong", async () => {
+    expect(await tokenValid(u("?token=abc"), "abc", h("wrong"))).toBe(true);
+    expect(await tokenValid(u("?token=wrong"), "abc", h("abc"))).toBe(true);
+  });
+  it("ignores an empty header", async () => {
+    expect(await tokenValid(u(""), "abc", h(""))).toBe(false);
+    expect(await tokenValid(u("?token=abc"), "abc", h(""))).toBe(true);
+  });
+  it("rejects everything when the expected secret is unset, header or not", async () => {
+    expect(await tokenValid(u(""), "", h(""))).toBe(false);
+    expect(await tokenValid(u(""), undefined as unknown as string, h("abc"))).toBe(false);
+  });
+});
+
 describe("redactedPath", () => {
   it("drops the query string", () => expect(redactedPath(u("?token=abc"))).toBe("/mcp"));
 });
