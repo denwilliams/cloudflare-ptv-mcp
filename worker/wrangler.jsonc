@@ -1,0 +1,13 @@
+{
+  "name": "ptv-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [{ "binding": "PTV_CACHE" }],
+  "ratelimits": [
+    { "name": "MCP_LIMITER", "namespace_id": "1001", "simple": { "limit": 120, "period": 60 } },
+    { "name": "PTV_LIMITER", "namespace_id": "1002", "simple": { "limit": 300, "period": 60 } }
+  ],
+  // Cron runs in UTC: 17:00 UTC is 3am AEST / 4am AEDT in Melbourne.
+  "triggers": { "crons": ["0 17 * * *"] }
+}
