@@ -1,0 +1,23 @@
+{
+  "departures": [
+    {"stop_id": 1007, "route_id": 1, "run_id": 101, "run_ref": "R1", "direction_id": 10, "disruption_ids": [900], "scheduled_departure_utc": "2026-07-15T22:37:00Z", "estimated_departure_utc": "2026-07-15T22:37:40Z", "at_platform": false, "platform_number": "2", "flags": ""},
+    {"stop_id": 1007, "route_id": 2, "run_id": 102, "run_ref": "R2", "direction_id": 20, "disruption_ids": [], "scheduled_departure_utc": "2026-07-15T22:42:00Z", "estimated_departure_utc": null, "at_platform": false, "platform_number": null, "flags": ""},
+    {"stop_id": 1007, "route_id": 1, "run_id": 103, "run_ref": "R3", "direction_id": 11, "disruption_ids": [], "scheduled_departure_utc": "2026-07-15T22:29:40Z", "estimated_departure_utc": null, "at_platform": false, "platform_number": "1", "flags": ""},
+    {"stop_id": 1007, "route_id": 2, "run_id": 104, "run_ref": "R4", "direction_id": 21, "disruption_ids": [], "scheduled_departure_utc": "2026-07-15T22:28:30Z", "estimated_departure_utc": null, "at_platform": false, "platform_number": "3", "flags": ""}
+  ],
+  "routes": {
+    "1": {"route_id": 1, "route_name": "Frankston", "route_type": 0},
+    "2": {"route_id": 2, "route_name": "Craigieburn", "route_type": 0}
+  },
+  "directions": {
+    "10": {"direction_id": 10, "direction_name": "Flinders Street", "route_id": 1},
+    "11": {"direction_id": 11, "direction_name": "Frankston", "route_id": 1},
+    "20": {"direction_id": 20, "direction_name": "Flinders Street", "route_id": 2},
+    "21": {"direction_id": 21, "direction_name": "Craigieburn", "route_id": 2}
+  },
+  "runs": {
+    "R1": {"run_ref": "R1", "route_id": 1, "destination_name": "Flinders Street"},
+    "R2": {"run_ref": "R2", "route_id": 2, "destination_name": "Southern Cross"},
+    "R3": {"run_ref": "R3", "route_id": 1, "destination_name": "Frankston"}
+  }
+}

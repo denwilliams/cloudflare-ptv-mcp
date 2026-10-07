@@ -1,0 +1,10 @@
+{
+  "disruptions": {
+    "general": [],
+    "metro_train": [
+      {"disruption_id": 900, "title": "Frankston line: delays due to a faulty train", "disruption_status": "Current", "routes": [{"route_id": 1, "route_name": "Frankston", "route_type": 0}]},
+      {"disruption_id": 901, "title": "Sandringham line: buses replace trains", "disruption_status": "Current", "routes": [{"route_id": 9, "route_name": "Sandringham", "route_type": 0}]}
+    ],
+    "metro_tram": []
+  }
+}
