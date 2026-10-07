@@ -52,6 +52,20 @@ describe("tools", () => {
     expect(json.result.tools.map((t: { name: string }) => t.name).sort()).toEqual(["find_stop", "next_departures"]);
   });
 
+  it("warns in the descriptions that bus searches are noisy and need a detailed name", async () => {
+    await rpc("test-token", init);
+    const { json } = await rpc("test-token", { jsonrpc: "2.0", id: 6, method: "tools/list", params: {} });
+    type Tool = { name: string; description: string; inputSchema: { properties: Record<string, { description?: string }> } };
+    const tools: Tool[] = json.result.tools;
+    const find = tools.find((t) => t.name === "find_stop")!;
+    const next = tools.find((t) => t.name === "next_departures")!;
+    expect(find.description).toMatch(/bus/i);
+    expect(find.description).toMatch(/noisy/i);
+    expect(find.description).toMatch(/both (cross )?streets|specific/i);
+    expect(find.inputSchema.properties.mode!.description).toMatch(/noisy/i);
+    expect(next.inputSchema.properties.stop!.description).toMatch(/bus/i);
+  });
+
   it("never logs the token or the query text", async () => {
     const spy = vi.spyOn(console, "log");
     await rpc("test-token", init);
