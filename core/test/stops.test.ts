@@ -60,7 +60,7 @@ describe("findStop", () => {
   it("reports no matches plainly, not as an error", async () => {
     const a = ctx({ stops: [], routes: [], outlets: [] });
     const r = await findStop(a.c, { query: "Nowhere" });
-    expect(r.text).toBe("No stops found for “Nowhere”.");
+    expect(r.text).toBe("No stops found for “Nowhere”. Searched trains and trams; pass mode \"bus\" to search buses.");
     expect(r.isError).toBeUndefined();
   });
 
@@ -95,9 +95,15 @@ describe("findStop", () => {
     expect(r.text.split("\n").map((l) => l.split(" ")[0])).toEqual(["Day", "Night"]);
   });
 
+  it("does not suggest bus mode when a mode was already given", async () => {
+    const a = ctx({ stops: [], routes: [], outlets: [] });
+    expect((await findStop(a.c, { query: "Nowhere", mode: "bus" })).text).toBe("No stops found for “Nowhere”.");
+    expect((await findStop(ctx({ stops: [] }).c, { query: "Nowhere", mode: "tram" })).text).toBe("No stops found for “Nowhere”.");
+  });
+
   it("drops V/Line (route type 3)", async () => {
     const resp = { stops: [{ stop_id: 1, stop_name: "Geelong", route_type: 3, routes: [] }] };
-    expect((await findStop(ctx(resp).c, { query: "Geelong" })).text).toBe("No stops found for “Geelong”.");
+    expect((await findStop(ctx(resp).c, { query: "Geelong" })).text).toBe("No stops found for “Geelong”. Searched trains and trams; pass mode \"bus\" to search buses.");
   });
 
   it("mode bus searches regular and night buses", async () => {

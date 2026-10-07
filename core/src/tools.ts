@@ -52,9 +52,13 @@ export async function findStop(
   if (res.value.length > MAX_LISTED) {
     lines.push(`…and ${res.value.length - MAX_LISTED} more. Add a mode or a fuller stop name to narrow the search.`);
   }
-  const text = lines.length ? lines.join("\n") : `No stops found for “${args.query.trim()}”.`;
+  const text = lines.length ? lines.join("\n") : noStops(args.query.trim(), args.mode);
   return { text: res.warning ? `${res.warning}\n${text}` : text, cache: res.source };
 }
+
+/** With no mode only trains and trams are searched, so say how to reach buses. */
+const noStops = (query: string, mode?: Mode) =>
+  `No stops found for “${query}”.${mode ? "" : ' Searched trains and trams; pass mode "bus" to search buses.'}`;
 
 const SOURCE_ORDER: CacheSource[] = ["miss", "stale-fallback", "stale", "hit"];
 const summarise = (sources: CacheSource[]): CacheSource =>
@@ -108,7 +112,7 @@ export async function nextDepartures(
     }
     sources.push(found.source);
     const resolved = resolveStop(found.value, stopArg);
-    if (resolved.kind === "none") return { text: `No stops found for “${stopArg}”.`, cache: found.source };
+    if (resolved.kind === "none") return { text: noStops(stopArg, args.mode), cache: found.source };
     if (resolved.kind === "many") {
       const list = resolved.candidates.map(describeStop).join("\n");
       return { text: `Several stops match “${stopArg}”. Which one did you mean?\n${list}`, cache: found.source };
@@ -152,6 +156,10 @@ export async function nextDepartures(
   }
 
   const skipped = new Set<string>();
+  // Lines that never reach the CBD: "toward city" means nothing for them.
+  const nonCity: Departure[] = [];
+  const nonCityLabels = new Set<string>();
+  const labelOf = (d: Departure) => (d.routeNumber ? routeLabel(d.routeNumber, d.routeType) : d.line);
   if (numericDirection !== undefined) {
     deps = deps.filter((d) => d.directionId === numericDirection);
   } else {
@@ -182,17 +190,32 @@ export async function nextDepartures(
           : r.outboundDirectionIds.includes(d.directionId);
       }
       const order = orders.get(`${d.routeId}:${d.directionId}`);
+      if (order && order.cbd.length === 0 && order.seq[stopId] !== undefined) {
+        nonCity.push(d);
+        nonCityLabels.add(labelOf(d));
+        return false;
+      }
       const toward = order ? headsTowardCity(order, stopId) : undefined;
       if (toward === undefined) {
-        skipped.add(d.routeNumber ? routeLabel(d.routeNumber, d.routeType) : d.line);
+        skipped.add(labelOf(d));
         return false;
       }
       return direction === "city" ? toward : !toward;
     });
   }
-  deps = deps.slice(0, limit);
 
-  const label = direction === "city" ? "toward City" : direction === "outbound" ? "outbound" : `in direction ${direction}`;
+  let label = direction === "city" ? "toward City" : direction === "outbound" ? "outbound" : `in direction ${direction}`;
+  const notes: string[] = [];
+  const lineList = [...nonCityLabels].join(", ");
+  if (deps.length === 0 && nonCity.length > 0) {
+    // Nothing here goes to the city, so show what does run, in every direction.
+    deps = nonCity;
+    label = "all directions";
+    notes.push(`${lineList} ${nonCityLabels.size === 1 ? "doesn't" : "don't"} go to the city, so every direction is shown.`);
+  } else if (nonCity.length > 0) {
+    notes.push(`Not shown (doesn't go to the city): ${lineList}.`);
+  }
+  deps = deps.slice(0, limit);
   const lines: string[] = [];
   if (dep.warning) lines.push(dep.warning);
 
@@ -206,7 +229,7 @@ export async function nextDepartures(
     return { text: lines.join("\n"), cache: summarise(sources) };
   }
 
-  lines.push(`${stopName} (${MODE_OF[routeType]}) ${label}:`, ...deps.map(renderDeparture));
+  lines.push(`${stopName} (${MODE_OF[routeType]}) ${label}:`, ...deps.map(renderDeparture), ...notes);
 
   try {
     const dis = await cached(

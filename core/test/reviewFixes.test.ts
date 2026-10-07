@@ -143,3 +143,44 @@ describe("buses", () => {
     expect(paths.filter((p) => p.startsWith("/v3/routes")).every((p) => p === "/v3/routes")).toBe(true);
   });
 });
+
+describe("routes that never reach the city (e.g. Bus 472, Williamstown - Moonee Ponds)", () => {
+  const routes = {
+    "9": { route_name: "Williamstown - Moonee Ponds via Footscray", route_number: "472", route_type: 2 },
+    "10": { route_name: "City - Gardenvale", route_number: "605", route_type: 2 },
+  };
+  const d = (route: number, dir: number, run: string, mins: number) => ({ ...dep({}, route, run, mins), direction_id: dir });
+  const noCbd = { stops: [{ stop_id: 22266, stop_sequence: 5, stop_suburb: "Ascot Vale" }, { stop_id: 7, stop_sequence: 9, stop_suburb: "Footscray" }] };
+  const cbd = (seq: number) => ({ stops: [{ stop_id: 22266, stop_sequence: seq, stop_suburb: "Ascot Vale" }, { stop_id: 1, stop_sequence: 5, stop_suburb: "Melbourne City" }] });
+  const make = (departures: unknown[]) => mk((p, q) => {
+    if (p.startsWith("/v3/departures")) return { departures, routes, runs: { A: { destination_name: "Moonee Ponds" }, B: { destination_name: "Williamstown" }, C: { destination_name: "Queen St" } } };
+    if (p === "/v3/disruptions") return { disruptions: {} };
+    if (p === "/v3/routes") return { routes: [] };
+    if (p === "/v3/stops/route/9/route_type/2") return noCbd;
+    if (p === "/v3/stops/route/10/route_type/2") return (q as { direction_id: number }).direction_id === 50 ? cbd(2) : cbd(9);
+    throw new Error(`unexpected ${p}`);
+  });
+
+  it("when nothing at the stop goes to the city, shows every direction with a note", async () => {
+    const r = await nextDepartures(make([d(9, 89, "A", 4), d(9, 97, "B", 6)]), { stop: "22266", mode: "bus" });
+    expect(r.text.split("\n")[0]).toBe("Stop 22266 (bus) all directions:");
+    expect(r.text).toContain("Bus 472 → Moonee Ponds: 4 min (scheduled)");
+    expect(r.text).toContain("Bus 472 → Williamstown: 6 min (scheduled)");
+    expect(r.text).toContain("Bus 472 doesn't go to the city, so every direction is shown.");
+    expect(r.text).not.toContain("Couldn't determine");
+  });
+
+  it("treats direction=outbound the same way", async () => {
+    const r = await nextDepartures(make([d(9, 89, "A", 4), d(9, 97, "B", 6)]), { stop: "22266", mode: "bus", direction: "outbound" });
+    expect(r.text).toContain("Bus 472 → Williamstown");
+    expect(r.text).toContain("every direction is shown");
+  });
+
+  it("when another line at the stop does go to the city, leaves the suburban line out and says so", async () => {
+    const r = await nextDepartures(make([d(9, 89, "A", 3), d(10, 50, "C", 5), d(10, 51, "B", 8)]), { stop: "22266", mode: "bus" });
+    expect(r.text).toContain("Bus 605 → Queen St");
+    expect(r.text).not.toContain("Bus 472 →");
+    expect(r.text).not.toContain("Williamstown");
+    expect(r.text).toContain("Not shown (doesn't go to the city): Bus 472.");
+  });
+});
