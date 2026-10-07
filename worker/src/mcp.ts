@@ -13,7 +13,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
   const run = async (tool: string, fn: () => Promise<ToolResult>) => {
     const start = Date.now();
     const r = await fn();
-    console.log(JSON.stringify({ tool, ms: Date.now() - start, cache: r.cache }));
+    console.log(JSON.stringify({ tool, ms: Date.now() - start, cache: r.cache, ...(r.ptvStatus ? { ptvStatus: r.ptvStatus } : {}) }));
     return { content: [{ type: "text" as const, text: r.text }], ...(r.isError ? { isError: true } : {}) };
   };
 

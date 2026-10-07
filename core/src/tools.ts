@@ -1,6 +1,6 @@
 import { POLICIES, cached, type Cached, type CacheRuntime, type CacheSource, type CacheStore } from "./cache";
 import { getCityRoutes } from "./cityRoutes";
-import type { PtvClient } from "./client";
+import { PtvError, type PtvClient } from "./client";
 import {
   renderDeparture,
   shapeDepartures,
@@ -25,9 +25,14 @@ export interface ToolResult {
   /** Summary of cache behaviour, for logging only. */
   cache: CacheSource;
   isError?: boolean;
+  /** HTTP status PTV returned, when the failure came from PTV. For logging. */
+  ptvStatus?: number;
 }
 
 export const PTV_DOWN = "PTV isn't responding right now. Try again shortly.";
+export const PTV_NOT_FOUND = "PTV didn't recognise that stop or search. Check the name or ID.";
+export const PTV_REJECTED =
+  "PTV rejected the server's credentials. This needs fixing by whoever runs the server.";
 
 export async function findStop(
   ctx: ToolContext,
@@ -37,8 +42,8 @@ export async function findStop(
   let res;
   try {
     res = await searchStops(ctx.client, ctx.static, ctx.rt, args.query, args.mode);
-  } catch {
-    return { text: PTV_DOWN, cache: "miss", isError: true };
+  } catch (err) {
+    return failure(err);
   }
   const text = res.value.length
     ? res.value.map(describeStop).join("\n")
@@ -63,7 +68,11 @@ const departuresFor = (ctx: ToolContext, routeType: 0 | 1, stopId: number) =>
     ctx.rt,
   );
 
-const failure = (): ToolResult => ({ text: PTV_DOWN, cache: "miss", isError: true });
+function failure(err?: unknown): ToolResult {
+  const status = err instanceof PtvError ? err.status : undefined;
+  const text = status === 400 || status === 404 ? PTV_NOT_FOUND : status === 401 || status === 403 ? PTV_REJECTED : PTV_DOWN;
+  return { text, cache: "miss", isError: true, ...(status ? { ptvStatus: status } : {}) };
+}
 
 export async function nextDepartures(
   ctx: ToolContext,
@@ -89,8 +98,8 @@ export async function nextDepartures(
     let found;
     try {
       found = await searchStops(ctx.client, ctx.static, ctx.rt, stopArg, args.mode);
-    } catch {
-      return failure();
+    } catch (err) {
+      return failure(err);
     }
     sources.push(found.source);
     const resolved = resolveStop(found.value, stopArg);
@@ -106,22 +115,35 @@ export async function nextDepartures(
 
   let dep!: Cached<PtvDeparturesResponse>;
   let routeType: 0 | 1 = routeTypes[0]!;
-  try {
-    for (const t of routeTypes) {
-      dep = await departuresFor(ctx, t, stopId);
-      routeType = t;
-      if (dep.value.departures.length) break;
+  let answered = false;
+  let lastErr: unknown;
+  for (const t of routeTypes) {
+    try {
+      const d = await departuresFor(ctx, t, stopId);
+      const hasServices = d.value.departures.length > 0;
+      if (!answered || hasServices) {
+        dep = d;
+        routeType = t;
+        answered = true;
+      }
+      if (hasServices) break;
+    } catch (err) {
+      lastErr = err; // try the next route type before giving up
     }
-  } catch {
-    return failure();
   }
+  if (!answered) return failure(lastErr);
   sources.push(dep.source);
   stopName ??= dep.value.stops?.[stopId]?.stop_name ?? `Stop ${stopId}`;
 
   let deps: Departure[] = shapeDepartures(dep.value, ctx.rt.now());
   if (args.route) {
     const q = args.route.trim().toLowerCase();
-    deps = deps.filter((d) => String(d.routeId) === q || d.line.toLowerCase().includes(q));
+    const numeric = /^\d+$/.test(q);
+    deps = deps.filter((d) =>
+      numeric
+        ? d.routeNumber === q || String(d.routeId) === q
+        : `${d.routeNumber ? `route ${d.routeNumber} ` : ""}${d.line}`.toLowerCase().includes(q),
+    );
   }
 
   const skipped = new Set<string>();
@@ -131,8 +153,8 @@ export async function nextDepartures(
     let cityRoutes;
     try {
       cityRoutes = await getCityRoutes(ctx.client, ctx.static, ctx.rt);
-    } catch {
-      return failure();
+    } catch (err) {
+      return failure(err);
     }
     deps = deps.filter((d) => {
       const r = cityRoutes[d.routeId];

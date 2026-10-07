@@ -11,7 +11,7 @@ export interface PtvDeparturesResponse {
     disruption_ids: number[];
   }>;
   stops?: Record<string, { stop_name?: string }>;
-  routes?: Record<string, { route_name: string }>;
+  routes?: Record<string, { route_name: string; route_number?: string | null }>;
   directions?: Record<string, { direction_name: string }>;
   runs?: Record<string, { destination_name?: string }>;
 }
@@ -27,6 +27,8 @@ export interface Departure {
   routeId: number;
   directionId: number;
   line: string;
+  /** Trams are identified by number (route_name is the termini); trains have none. */
+  routeNumber: string | null;
   destination: string;
   scheduledUtc: string;
   estimatedUtc: string | null;
@@ -54,6 +56,7 @@ export function shapeDepartures(resp: PtvDeparturesResponse, nowMs: number): Dep
         routeId: d.route_id,
         directionId: d.direction_id,
         line: resp.routes?.[d.route_id]?.route_name ?? `Route ${d.route_id}`,
+        routeNumber: resp.routes?.[d.route_id]?.route_number || null,
         destination:
           resp.runs?.[d.run_ref]?.destination_name ??
           resp.directions?.[d.direction_id]?.direction_name ??
@@ -72,7 +75,8 @@ export function shapeDepartures(resp: PtvDeparturesResponse, nowMs: number): Dep
 
 export function renderDeparture(d: Departure): string {
   const eta = d.minutes === 0 ? "now" : `${d.minutes} min`;
-  const base = `${d.line} line → ${d.destination}: ${eta} (${d.live ? "live" : "scheduled"}), ${formatMelbourneTime(effective(d))}`;
+  const label = d.routeNumber ? `Route ${d.routeNumber}` : `${d.line} line`;
+  const base = `${label} → ${d.destination}: ${eta} (${d.live ? "live" : "scheduled"}), ${formatMelbourneTime(effective(d))}`;
   return d.platform ? `${base}, Platform ${d.platform}` : base;
 }
 

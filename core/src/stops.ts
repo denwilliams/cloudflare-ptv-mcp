@@ -19,7 +19,7 @@ interface PtvSearchResponse {
     stop_name: string;
     stop_suburb?: string | null;
     route_type: number;
-    routes?: Array<{ route_name: string }>;
+    routes?: Array<{ route_name: string; route_number?: string | null }>;
   }>;
 }
 
@@ -54,7 +54,7 @@ export async function searchStops(
       name: s.stop_name,
       routeType: s.route_type,
       suburb: s.stop_suburb ?? null,
-      routes: (s.routes ?? []).map((r) => r.route_name),
+      routes: (s.routes ?? []).map((r) => (r.route_number ? `Route ${r.route_number}` : r.route_name)),
     }));
   return { ...res, value };
 }

@@ -1,0 +1,86 @@
+import { describe, expect, it } from "vitest";
+import { MemoryCacheStore, type CacheRuntime } from "../src/cache";
+import { PtvError, type PtvClient } from "../src/client";
+import { findStop, nextDepartures, PTV_DOWN, type ToolContext } from "../src/tools";
+
+const NOW = Date.parse("2026-07-15T22:30:00Z");
+const rt: CacheRuntime = { now: () => NOW, defer: () => {} };
+const mk = (get: (path: string) => unknown): ToolContext => ({
+  client: { get: async <T>(p: string) => get(p) as T } as PtvClient,
+  live: new MemoryCacheStore(() => NOW),
+  static: new MemoryCacheStore(() => NOW),
+  rt,
+});
+const dep = (route: Record<string, unknown>, routeId: number, runRef: string, mins: number) => ({
+  route_id: routeId, direction_id: 50, run_ref: runRef, disruption_ids: [], estimated_departure_utc: null,
+  scheduled_departure_utc: new Date(NOW + mins * 60_000).toISOString(), platform_number: null, _route: route,
+});
+
+describe("Important 1: PTV failures are distinguished and carry a status", () => {
+  const failing = (status?: number) => mk(() => { throw new PtvError("PTV failed", status); });
+  it("403 means the server's credentials were rejected", async () => {
+    const r = await nextDepartures(failing(403), { stop: "1007", mode: "train" });
+    expect(r).toMatchObject({ isError: true, ptvStatus: 403 });
+    expect(r.text).toContain("rejected the server's credentials");
+  });
+  it("400/404 mean PTV didn't recognise the request", async () => {
+    const r = await findStop(failing(404), { query: "Ascot Vale" });
+    expect(r).toMatchObject({ isError: true, ptvStatus: 404 });
+    expect(r.text).toContain("didn't recognise");
+  });
+  it("5xx, timeouts and the upstream cap stay the generic outage message", async () => {
+    expect(await nextDepartures(failing(503), { stop: "1007", mode: "train" })).toMatchObject({ text: PTV_DOWN, ptvStatus: 503 });
+    const none = await nextDepartures(failing(undefined), { stop: "1007", mode: "train" });
+    expect(none.text).toBe(PTV_DOWN);
+    expect(none.ptvStatus).toBeUndefined();
+  });
+});
+
+describe("Important 2: numeric stop id without a mode tries both route types", () => {
+  const empty = { departures: [] };
+  const tram = { departures: [dep({}, 5, "T1", 5)], routes: { "5": { route_name: "A - B", route_number: "58" } }, runs: { T1: { destination_name: "Toorak" } } };
+  it("train empty + tram error -> no upcoming services, not an outage", async () => {
+    const r = await nextDepartures(mk((p) => { if (p.includes("route_type/0")) return empty; throw new PtvError("bad", 400); }), { stop: "1007", direction: "50" });
+    expect(r.text).toBe("No upcoming services at Stop 1007 in direction 50.");
+    expect(r.isError).toBeUndefined();
+  });
+  it("train error + tram ok -> tram departures", async () => {
+    const r = await nextDepartures(mk((p) => { if (p.includes("route_type/0")) throw new PtvError("bad", 400); return tram; }), { stop: "2001", direction: "50" });
+    expect(r.text).toContain("Route 58 → Toorak");
+  });
+  it("both fail -> outage message", async () => {
+    const r = await nextDepartures(mk(() => { throw new PtvError("down"); }), { stop: "1007", direction: "50" });
+    expect(r).toMatchObject({ isError: true, text: PTV_DOWN });
+  });
+});
+
+describe("Important 3: trams are identified by route number", () => {
+  const routes = {
+    "1": { route_name: "East Coburg - South Melbourne Beach", route_number: "1" },
+    "2": { route_name: "Moreland - Glen Iris", route_number: "11" },
+  };
+  const resp = { departures: [dep({}, 1, "A", 3), dep({}, 2, "B", 6)], routes, runs: { A: { destination_name: "Coburg" }, B: { destination_name: "Glen Iris" } } };
+  const ctx = () => mk((p) => (p.startsWith("/v3/departures") ? resp : { disruptions: {} }));
+  it("renders trams as Route <number>", async () => {
+    const r = await nextDepartures(ctx(), { stop: "2001", mode: "tram", direction: "50" });
+    expect(r.text).toContain("Route 1 → Coburg: 3 min (scheduled)");
+    expect(r.text).toContain("Route 11 → Glen Iris: 6 min (scheduled)");
+  });
+  it("route '1' matches Route 1 only, not Route 11", async () => {
+    const r = await nextDepartures(ctx(), { stop: "2001", mode: "tram", direction: "50", route: "1" });
+    expect(r.text).toContain("Route 1 →");
+    expect(r.text).not.toContain("Route 11");
+  });
+  it("route '11' and route 'route 11' and a name fragment all work", async () => {
+    for (const route of ["11", "route 11", "glen"]) {
+      const r = await nextDepartures(ctx(), { stop: "2001", mode: "tram", direction: "50", route });
+      expect(r.text, route).toContain("Route 11 →");
+      expect(r.text, route).not.toContain("Route 1 →");
+    }
+  });
+  it("find_stop lists tram routes by number", async () => {
+    const search = { stops: [{ stop_id: 9, stop_name: "Bourke St/Swanston St", route_type: 1, routes: [{ route_name: "East Coburg - South Melbourne Beach", route_number: "96" }] }] };
+    const r = await findStop(mk(() => search), { query: "Bourke" });
+    expect(r.text).toBe("Bourke St/Swanston St (tram) id 9: Route 96");
+  });
+});

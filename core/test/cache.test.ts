@@ -87,3 +87,17 @@ describe("cached", () => {
     ).rejects.toThrow("down");
   });
 });
+
+describe("Important 4: a cache write failure never fails the request", () => {
+  it("returns the loaded value when store.put throws", async () => {
+    const t = setup();
+    const broken = {
+      get: async () => null,
+      put: async () => {
+        throw new Error("KV 429");
+      },
+    };
+    const r = await cached(broken, "k", POLICIES.departures, t.ok, t.rt);
+    expect(r).toMatchObject({ source: "miss", value: { n: 1 } });
+  });
+});

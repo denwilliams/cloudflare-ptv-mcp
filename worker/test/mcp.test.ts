@@ -49,4 +49,16 @@ describe("tools", () => {
     expect(logged).not.toContain("test-token");
     expect(logged).not.toContain("token=");
   });
+
+  it("logs the PTV status (and still no URL) when PTV rejects the credentials", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response("no", { status: 403 }));
+    const spy = vi.spyOn(console, "log");
+    await rpc("test-token", init);
+    const { json } = await rpc("test-token", { jsonrpc: "2.0", id: 4, method: "tools/call", params: { name: "next_departures", arguments: { stop: "1007", mode: "train" } } });
+    expect(json.result.isError).toBe(true);
+    expect(json.result.content[0].text).toContain("rejected the server's credentials");
+    const logged = spy.mock.calls.map((c) => c.join(" ")).join("\n");
+    expect(logged).toContain('"ptvStatus":403');
+    expect(logged).not.toMatch(/devid|signature|timetableapi|test-key/i);
+  });
 });

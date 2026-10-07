@@ -59,7 +59,11 @@ export async function cached<T>(
   const ageSeconds = entry ? (rt.now() - entry.storedAt) / 1000 : Infinity;
   const refresh = async () => {
     const value = await load();
-    await store.put(key, value, policy.retainSeconds);
+    try {
+      await store.put(key, value, policy.retainSeconds);
+    } catch {
+      // A failed cache write (e.g. KV's one-write-per-second-per-key limit) must not fail a request PTV answered.
+    }
     return value;
   };
 
