@@ -94,4 +94,12 @@ describe("real-data finding: PTV max_results applies per route and direction", (
     await nextDepartures(ctx, { stop: "1007", mode: "train", direction: "50" });
     expect(queries[0]).toMatchObject({ max_results: 12 });
   });
+  it("expands Stop so the response names the stop (trams otherwise show 'Stop 3500')", async () => {
+    const queries: Array<{ expand?: string[] }> = [];
+    const ctx = mk((p) => (p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }));
+    const get = ctx.client.get.bind(ctx.client);
+    ctx.client.get = (async (path: string, q?: { expand?: string[] }) => { if (path.startsWith("/v3/departures")) queries.push(q ?? {}); return get(path); }) as PtvClient["get"];
+    await nextDepartures(ctx, { stop: "1007", mode: "train", direction: "50" });
+    expect(queries[0]!.expand).toContain("Stop");
+  });
 });

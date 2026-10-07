@@ -6,3 +6,4 @@ export * from "./departures";
 export * from "./cityRoutes";
 export * from "./stops";
 export * from "./tools";
+export * from "./stopOrder";

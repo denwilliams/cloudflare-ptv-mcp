@@ -32,13 +32,14 @@ PTV_DEV_ID=... PTV_API_KEY=... npx tsx scripts/record-fixtures.ts   # record rea
 
 How the pieces fit together:
 - `cached()` in `core/src/cache.ts` is the single caching entry point: fresh hit, stale-while-revalidate (refresh via `rt.defer` = `ctx.waitUntil`), and fallback to an old entry with a "may be delayed" warning when PTV fails. The PTV client's `guard` (the `PTV_LIMITER` binding) makes the upstream cap look like a PTV failure, so it takes the same fallback path.
-- "Into the city" is resolved by `getCityRoutes`: for each train/tram route it picks the direction whose name matches a CBD station name. Routes with zero or several matches (cross-city trams) are left out unless `CITY_DIRECTION_OVERRIDES` (in `core/src/cityRoutes.ts`) names the direction. The name matching is a heuristic; check it against real data after recording fixtures.
+- "Into the city" is resolved by `getCityRoutes`: for each train/tram route it picks the direction whose name matches a CBD station name. Routes with zero or several matches (cross-city trams) are left out unless `CITY_DIRECTION_OVERRIDES` (in `core/src/cityRoutes.ts`) names the direction. Trains resolve this way (their direction is literally named "City"). Routes it can't resolve (most trams, which are named by their end stops) fall back to `core/src/stopOrder.ts`: for the departure's route and direction, PTV's `/v3/stops/route/{id}/route_type/{rt}?direction_id=` gives each stop's `stop_sequence` and `stop_suburb`, and a direction heads toward the city when a "Melbourne City" stop comes later than the user's stop. That lookup is lazy per route+direction and cached 24 h. Routes that never reach the CBD (e.g. tram 82) are reported as undetermined.
 - Departures are cached per stop (`dep:{routeType}:{stop}`), not per user. Direction and route filters are applied after caching because direction IDs are per route.
 
 ## Gotchas
 
 - Access control is a shared `?token=` query parameter checked in constant time against `MCP_TOKEN`; rotate the secret to block everyone. Never log the token, the query string, signed PTV URLs, `devid`, or tool arguments. Errors from the PTV client deliberately contain no URL.
 - The Cache API does nothing on `*.workers.dev`; departure/disruption caching only works on a custom domain.
+- A cold `city_routes` build is ~42 PTV calls (one routes call plus one directions call per route). The nightly cron keeps it warm; after a first deploy or a KV expiry the first request pays for it, which can hit the 50-subrequest cap on the Workers free plan.
 - Cron triggers are UTC: `0 17 * * *` is about 3–4 am Melbourne.
 - The Rate Limiting binding is per Cloudflare location and eventually consistent.
 - Fixtures in `core/test/fixtures/` are hand-written from documented v3 shapes. Real responses recorded on 2026-10-07 (via `scripts/record-fixtures.ts`) are in `core/test/fixtures/recorded/` and `core/test/recorded.test.ts` checks the shapers against them; re-record if PTV's shapes seem to have changed.

@@ -1,5 +1,6 @@
 import { POLICIES, cached, type Cached, type CacheRuntime, type CacheSource, type CacheStore } from "./cache";
 import { getCityRoutes } from "./cityRoutes";
+import { getStopOrder, headsTowardCity, type RouteStopOrder } from "./stopOrder";
 import { PtvError, type PtvClient } from "./client";
 import {
   renderDeparture,
@@ -63,7 +64,7 @@ const departuresFor = (ctx: ToolContext, routeType: 0 | 1, stopId: number) =>
     () =>
       ctx.client.get<PtvDeparturesResponse>(`/v3/departures/route_type/${routeType}/stop/${stopId}`, {
         max_results: 12, // PTV applies this per route and direction
-        expand: ["Route", "Direction", "Run"],
+        expand: ["Route", "Direction", "Run", "Stop"],
       }),
     ctx.rt,
   );
@@ -133,7 +134,7 @@ export async function nextDepartures(
   }
   if (!answered) return failure(lastErr);
   sources.push(dep.source);
-  stopName ??= dep.value.stops?.[stopId]?.stop_name ?? `Stop ${stopId}`;
+  stopName ??= dep.value.stops?.[stopId]?.stop_name?.trim() ?? `Stop ${stopId}`;
 
   let deps: Departure[] = shapeDepartures(dep.value, ctx.rt.now());
   if (args.route) {
@@ -156,15 +157,33 @@ export async function nextDepartures(
     } catch (err) {
       return failure(err);
     }
+    // Routes whose city direction can't be read from their direction names (cross-city trams)
+    // fall back to the stop's position along the route.
+    const orders = new Map<string, RouteStopOrder | null>();
+    await Promise.all(
+      [...new Set(deps.filter((d) => !cityRoutes[d.routeId]).map((d) => `${d.routeId}:${d.directionId}`))].map(async (k) => {
+        const [routeId, directionId] = k.split(":").map(Number) as [number, number];
+        try {
+          orders.set(k, await getStopOrder(ctx.client, ctx.static, ctx.rt, routeId, routeType, directionId));
+        } catch {
+          orders.set(k, null);
+        }
+      }),
+    );
     deps = deps.filter((d) => {
       const r = cityRoutes[d.routeId];
-      if (!r) {
-        skipped.add(d.line);
+      if (r) {
+        return direction === "city"
+          ? d.directionId === r.cityDirectionId
+          : r.outboundDirectionIds.includes(d.directionId);
+      }
+      const order = orders.get(`${d.routeId}:${d.directionId}`);
+      const toward = order ? headsTowardCity(order, stopId) : undefined;
+      if (toward === undefined) {
+        skipped.add(d.routeNumber ? `Route ${d.routeNumber}` : d.line);
         return false;
       }
-      return direction === "city"
-        ? d.directionId === r.cityDirectionId
-        : r.outboundDirectionIds.includes(d.directionId);
+      return direction === "city" ? toward : !toward;
     });
   }
   deps = deps.slice(0, limit);
