@@ -7,11 +7,19 @@ const mode = z
   .enum(["train", "tram", "bus"])
   .optional()
   .describe(
-    'Trains and trams are searched by default. Pass "bus" to search buses, but bus searches are noisy: they cover all of Victoria and return many similarly named stops, so give a detailed name (both cross streets, e.g. "Chapel St/Alexandra Ave", or add the suburb). Pass the mode with a numeric stop ID: IDs are only unique within a mode.',
+    'Which kind of stop: "train", "tram" or "bus". Buses are fully supported. If omitted, trains and trams are searched, so always pass "bus" for a bus stop. Bus stop names are numerous and similar across Victoria, so give a specific name: both cross streets (e.g. "Chapel St/Alexandra Ave") or add the suburb. Stop IDs repeat across modes, so pass the mode with a numeric stop ID.',
   );
 
+const INSTRUCTIONS =
+  'Live and scheduled Melbourne public transport: metro trains, trams and buses (regular and night). Buses are fully supported: pass mode "bus" for them. When no mode is given, trains and trams are searched. ' +
+  "Use next_departures for \"when is the next ...\" questions; it accepts a stop name or a stop ID, and find_stop is there to look up stop IDs or resolve an ambiguous name. " +
+  "Bus stop names are numerous and similar across Victoria, so give both cross streets or the suburb. Lines that never go to the city (many suburban buses and trams) show every direction.";
+
 export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
-  const server = new McpServer({ name: "ptv-mcp", version: "1.0.0" });
+  const server = new McpServer(
+    { name: "ptv-mcp", title: "Melbourne PTV: trains, trams and buses", version: "1.0.0" },
+    { instructions: INSTRUCTIONS },
+  );
   const tc = toolContext(env, ctx);
 
   // One log line per call: tool, latency, cache behaviour. No arguments, no URLs.
@@ -26,7 +34,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "find_stop",
     {
       description:
-        "Find Melbourne metro train stations, tram stops and bus stops by name. Returns stop IDs, modes and the lines serving each stop. Trains and trams are searched by default. Bus searches (mode \"bus\") are noisy: they cover all of Victoria and return many similar stops, so be specific, ideally both cross streets. Prefer the stop ID from here for follow-up calls.",
+        "Find a Melbourne train station, tram stop or bus stop by name. Covers trains, trams and buses: with no mode it searches trains and trams, and mode \"bus\" searches buses. Returns stop IDs, modes and the lines or routes serving each stop. For buses give a specific name (both cross streets, e.g. \"Chapel St/Alexandra Ave\", or add the suburb), because many bus stops across Victoria have similar names. Prefer the stop ID from here for follow-up calls.",
       inputSchema: {
         query: z.string().describe("Stop or station name, e.g. 'Ascot Vale'"),
         mode,
@@ -39,12 +47,12 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "next_departures",
     {
       description:
-        "Next train, tram or bus departures from a stop, with live times where available. Defaults to services heading into the city and includes active disruptions.",
+        "Next train, tram or bus departures from a stop, with live times where available. Works for buses: pass mode \"bus\". Defaults to services heading into the city and includes active disruptions. For lines that never go to the city (many suburban buses and trams) it shows every direction instead.",
       inputSchema: {
         stop: z
           .string()
           .describe(
-            "Stop name or numeric stop ID. For buses, pass mode \"bus\" and either the stop ID from find_stop or a detailed name with both cross streets; vague bus names match many stops and return a list to choose from.",
+            "Stop name or numeric stop ID. For buses pass mode \"bus\" and either the stop ID from find_stop or a specific name with both cross streets.",
           ),
         mode,
         route: z.string().optional().describe("Line name (or part of it) or route ID"),

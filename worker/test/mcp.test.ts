@@ -52,18 +52,28 @@ describe("tools", () => {
     expect(json.result.tools.map((t: { name: string }) => t.name).sort()).toEqual(["find_stop", "next_departures"]);
   });
 
-  it("warns in the descriptions that bus searches are noisy and need a detailed name", async () => {
-    await rpc("test-token", init);
+  it("presents buses as supported: server title and instructions, and no 'only' in the tool text", async () => {
+    const { json: initJson } = await rpc("test-token", init);
+    expect(initJson.result.serverInfo.title).toMatch(/trains, trams and buses/i);
+    expect(initJson.result.instructions).toMatch(/buses/i);
+    expect(initJson.result.instructions).toMatch(/fully supported/i);
+    expect(initJson.result.instructions).toContain('mode "bus"');
+
     const { json } = await rpc("test-token", { jsonrpc: "2.0", id: 6, method: "tools/list", params: {} });
     type Tool = { name: string; description: string; inputSchema: { properties: Record<string, { description?: string }> } };
     const tools: Tool[] = json.result.tools;
     const find = tools.find((t) => t.name === "find_stop")!;
     const next = tools.find((t) => t.name === "next_departures")!;
-    expect(find.description).toMatch(/bus/i);
-    expect(find.description).toMatch(/noisy/i);
-    expect(find.description).toMatch(/both (cross )?streets|specific/i);
-    expect(find.inputSchema.properties.mode!.description).toMatch(/noisy/i);
-    expect(next.inputSchema.properties.stop!.description).toMatch(/bus/i);
+    for (const t of tools) {
+      const everything = [t.description, ...Object.values(t.inputSchema.properties).map((p) => p.description ?? "")].join(" ");
+      expect(everything, t.name).toMatch(/bus/i);
+      expect(everything, t.name).not.toMatch(/\bonly\b/i);
+    }
+    expect(find.description).toMatch(/train.*tram.*bus/i);
+    expect(next.description).toMatch(/Works for buses/);
+    expect(find.inputSchema.properties.mode!.description).toMatch(/always pass "bus"/i);
+    expect(find.inputSchema.properties.mode!.description).toMatch(/both cross streets/i);
+    expect(next.inputSchema.properties.stop!.description).toMatch(/both cross streets/i);
   });
 
   it("never logs the token or the query text", async () => {
