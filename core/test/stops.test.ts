@@ -60,7 +60,7 @@ describe("findStop", () => {
   it("reports no matches plainly, not as an error", async () => {
     const a = ctx({ stops: [], routes: [], outlets: [] });
     const r = await findStop(a.c, { query: "Nowhere" });
-    expect(r.text).toBe("No stops found for “Nowhere”. Searched trains and trams; pass mode \"bus\" to search buses.");
+    expect(r.text).toBe("No stops found for “Nowhere”. Searched trains, trams and buses.");
     expect(r.isError).toBeUndefined();
   });
 
@@ -103,7 +103,7 @@ describe("findStop", () => {
 
   it("drops V/Line (route type 3)", async () => {
     const resp = { stops: [{ stop_id: 1, stop_name: "Geelong", route_type: 3, routes: [] }] };
-    expect((await findStop(ctx(resp).c, { query: "Geelong" })).text).toBe("No stops found for “Geelong”. Searched trains and trams; pass mode \"bus\" to search buses.");
+    expect((await findStop(ctx(resp).c, { query: "Geelong" })).text).toBe("No stops found for “Geelong”. Searched trains, trams and buses.");
   });
 
   it("mode bus searches regular and night buses", async () => {
@@ -137,6 +137,40 @@ describe("findStop", () => {
     const r = await findStop(a.c, { query: "  ascot   vale " });
     expect(a.paths).toHaveLength(1);
     expect(r.cache).toBe("hit");
+  });
+});
+
+describe("findStop falls back to buses when no train or tram matches", () => {
+  const busResp = { stops: [{ stop_id: 22266, stop_name: "Epsom Rd/Mirams St", stop_suburb: "Ascot Vale", route_type: 2, routes: [{ route_name: "Williamstown - Moonee Ponds", route_number: "472", route_type: 2 }] }] };
+  const split = (trainTram: unknown, bus: unknown) => {
+    const types: unknown[] = [];
+    const c = ctx();
+    c.c.client = { get: async <T>(_p: string, q?: { route_types?: number[] }) => (types.push(q?.route_types), (q?.route_types?.includes(2) ? bus : trainTram) as T) } as PtvClient;
+    return { ...c, types };
+  };
+  it("searches buses when trains and trams find nothing, and says so", async () => {
+    const t = split({ stops: [] }, busResp);
+    const r = await findStop(t.c, { query: "Mirams St" });
+    expect(t.types).toEqual([[0, 1], [2, 4]]);
+    expect(r.text.split("\n")).toEqual([
+      "No train or tram stops matched “Mirams St”, so these are bus stops.",
+      "Epsom Rd/Mirams St (bus, Ascot Vale) id 22266: Bus 472",
+    ]);
+    expect(r.isError).toBeUndefined();
+  });
+  it("does not search buses when a train or tram matches", async () => {
+    const t = split(search, busResp);
+    await findStop(t.c, { query: "Ascot Vale" });
+    expect(t.types).toEqual([[0, 1]]);
+  });
+  it("does not fall back when a mode was given", async () => {
+    const t = split({ stops: [] }, busResp);
+    expect((await findStop(t.c, { query: "Mirams St", mode: "tram" })).text).toBe("No stops found for “Mirams St”.");
+    expect(t.types).toEqual([[1]]);
+  });
+  it("says buses were searched too when nothing matches anywhere", async () => {
+    const t = split({ stops: [] }, { stops: [] });
+    expect((await findStop(t.c, { query: "Nowhere" })).text).toBe("No stops found for “Nowhere”. Searched trains, trams and buses.");
   });
 });
 

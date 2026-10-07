@@ -7,12 +7,12 @@ const mode = z
   .enum(["train", "tram", "bus"])
   .optional()
   .describe(
-    'Which kind of stop: "train", "tram" or "bus". Buses are fully supported. If omitted, trains and trams are searched, so always pass "bus" for a bus stop. Bus stop names are numerous and similar across Victoria, so give a specific name: both cross streets (e.g. "Chapel St/Alexandra Ave") or add the suburb. Stop IDs repeat across modes, so pass the mode with a numeric stop ID.',
+    'Always pass "bus" when the user is asking about a bus, a bus route or a bus stop. Otherwise "train" or "tram", or leave it out to search trains and trams (if neither matches a name, buses are tried too). Bus stop names are numerous and similar across Victoria, so give a specific name: both cross streets (e.g. "Chapel St/Alexandra Ave") or add the suburb. Stop IDs repeat across modes, so always pass the mode with a numeric stop ID.',
   );
 
 const INSTRUCTIONS =
-  'Live and scheduled Melbourne public transport: metro trains, trams and buses (regular and night). Buses are fully supported: pass mode "bus" for them. When no mode is given, trains and trams are searched. ' +
-  "Use next_departures for \"when is the next ...\" questions; it accepts a stop name or a stop ID, and find_stop is there to look up stop IDs or resolve an ambiguous name. " +
+  'Live and scheduled Melbourne public transport: metro trains, trams and buses (regular and night). Buses are fully supported: always pass mode "bus" when the user asks about a bus. With no mode, trains and trams are searched (and buses if a name matches neither). ' +
+  "Use next_departures for \"when is the next ...\" questions; it accepts a stop name or a stop ID, and find_stop is there to look up stop IDs or resolve an ambiguous name. Always pass the mode along with a numeric stop ID. " +
   "Bus stop names are numerous and similar across Victoria, so give both cross streets or the suburb. Lines that never go to the city (many suburban buses and trams) show every direction.";
 
 export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
@@ -34,7 +34,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "find_stop",
     {
       description:
-        "Find a Melbourne train station, tram stop or bus stop by name. Covers trains, trams and buses: with no mode it searches trains and trams, and mode \"bus\" searches buses. Returns stop IDs, modes and the lines or routes serving each stop. For buses give a specific name (both cross streets, e.g. \"Chapel St/Alexandra Ave\", or add the suburb), because many bus stops across Victoria have similar names. Prefer the stop ID from here for follow-up calls.",
+        "Find a Melbourne train station, tram stop or bus stop by name. Covers trains, trams and buses. For buses always pass mode \"bus\"; with no mode it searches trains and trams (and buses if neither matches). Returns stop IDs, modes and the lines or routes serving each stop. For buses give a specific name (both cross streets, e.g. \"Chapel St/Alexandra Ave\", or add the suburb), because many bus stops across Victoria have similar names. Prefer the stop ID from here for follow-up calls.",
       inputSchema: {
         query: z.string().describe("Stop or station name, e.g. 'Ascot Vale'"),
         mode,
@@ -47,7 +47,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "next_departures",
     {
       description:
-        "Next train, tram or bus departures from a stop, with live times where available. Works for buses: pass mode \"bus\". Defaults to services heading into the city and includes active disruptions. For lines that never go to the city (many suburban buses and trams) it shows every direction instead.",
+        "Next train, tram or bus departures from a stop, with live times where available. Works for buses: always pass mode \"bus\" for a bus stop. Defaults to services heading into the city and includes active disruptions. For lines that never go to the city (many suburban buses and trams) it shows every direction instead.",
       inputSchema: {
         stop: z
           .string()

@@ -105,7 +105,7 @@ describe("nextDepartures", () => {
 
   it("reports no stops found plainly", async () => {
     const r = await nextDepartures(setup({ search: { stops: [] } }).ctx, { stop: "Nowhere" });
-    expect(r).toMatchObject({ text: "No stops found for “Nowhere”. Searched trains and trams; pass mode \"bus\" to search buses." });
+    expect(r).toMatchObject({ text: "No stops found for “Nowhere”. Searched trains, trams and buses." });
     expect(r.isError).toBeUndefined();
   });
 

@@ -41,7 +41,7 @@ describe("Important 2: numeric stop id without a mode tries both route types", (
   const tram = { departures: [dep({}, 5, "T1", 5)], routes: { "5": { route_name: "A - B", route_number: "58" } }, runs: { T1: { destination_name: "Toorak" } } };
   it("train empty + tram error -> no upcoming services, not an outage", async () => {
     const r = await nextDepartures(mk((p) => { if (p.includes("route_type/0")) return empty; throw new PtvError("bad", 400); }), { stop: "1007", direction: "50" });
-    expect(r.text).toBe("No upcoming services at Stop 1007 in direction 50.");
+    expect(r.text).toBe('No upcoming services at Stop 1007 in direction 50. If this is a bus stop, pass mode "bus".');
     expect(r.isError).toBeUndefined();
   });
   it("train error + tram ok -> tram departures", async () => {
@@ -182,5 +182,26 @@ describe("routes that never reach the city (e.g. Bus 472, Williamstown - Moonee 
     expect(r.text).not.toContain("Bus 472 →");
     expect(r.text).not.toContain("Williamstown");
     expect(r.text).toContain("Not shown (doesn't go to the city): Bus 472.");
+  });
+});
+
+describe("next_departures by name without a mode falls back to buses", () => {
+  it("resolves a bus stop when no train or tram matches, and asks PTV for bus departures", async () => {
+    const paths: string[] = [];
+    const bus = { stops: [{ stop_id: 22266, stop_name: "Epsom Rd/Mirams St", route_type: 2, routes: [] }] };
+    const ctx = mk((p, q) => {
+      paths.push(p);
+      if (p.startsWith("/v3/search/")) return (q as { route_types: number[] }).route_types.includes(2) ? bus : { stops: [] };
+      if (p.startsWith("/v3/departures")) return { departures: [] };
+      return { disruptions: {} };
+    });
+    const r = await nextDepartures(ctx, { stop: "Epsom Rd/Mirams St", direction: "50" });
+    expect(paths).toContain("/v3/departures/route_type/2/stop/22266");
+    expect(r.text.split("\n")[0]).toBe("No train or tram stop matched “Epsom Rd/Mirams St”, so this is a bus stop.");
+  });
+  it("hints at mode bus when a numeric id with no mode has no services", async () => {
+    const ctx = mk((p) => (p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }));
+    const r = await nextDepartures(ctx, { stop: "22266", direction: "50" });
+    expect(r.text).toContain('If this is a bus stop, pass mode "bus".');
   });
 });

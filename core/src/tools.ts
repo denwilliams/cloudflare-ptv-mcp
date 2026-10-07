@@ -43,7 +43,7 @@ export async function findStop(
   if (!args.query.trim()) return { text: "Give a stop name to search for.", cache: "hit", isError: true };
   let res;
   try {
-    res = await searchStops(ctx.client, ctx.static, ctx.rt, args.query, args.mode);
+    res = await searchWithBusFallback(ctx, args.query, args.mode);
   } catch (err) {
     return failure(err);
   }
@@ -52,13 +52,30 @@ export async function findStop(
   if (res.value.length > MAX_LISTED) {
     lines.push(`…and ${res.value.length - MAX_LISTED} more. Add a mode or a fuller stop name to narrow the search.`);
   }
+  if (res.busFallback) lines.unshift(`No train or tram stops matched “${args.query.trim()}”, so these are bus stops.`);
   const text = lines.length ? lines.join("\n") : noStops(args.query.trim(), args.mode);
   return { text: res.warning ? `${res.warning}\n${text}` : text, cache: res.source };
 }
 
-/** With no mode only trains and trams are searched, so say how to reach buses. */
+/** With no mode we search trains and trams, then buses if those find nothing. */
 const noStops = (query: string, mode?: Mode) =>
-  `No stops found for “${query}”.${mode ? "" : ' Searched trains and trams; pass mode "bus" to search buses.'}`;
+  `No stops found for “${query}”.${mode ? "" : " Searched trains, trams and buses."}`;
+
+/**
+ * Callers often leave mode off even for bus stops. Trains and trams stay the default, but a
+ * name that matches neither is searched again among buses instead of reporting nothing.
+ */
+async function searchWithBusFallback(ctx: ToolContext, query: string, mode?: Mode) {
+  const res = await searchStops(ctx.client, ctx.static, ctx.rt, query, mode);
+  if (mode || res.value.length > 0) return { ...res, busFallback: false };
+  try {
+    const bus = await searchStops(ctx.client, ctx.static, ctx.rt, query, "bus");
+    if (bus.value.length > 0) return { ...bus, busFallback: true };
+  } catch {
+    // The bus search is a courtesy; fall through to the original empty result.
+  }
+  return { ...res, busFallback: false };
+}
 
 const SOURCE_ORDER: CacheSource[] = ["miss", "stale-fallback", "stale", "hit"];
 const summarise = (sources: CacheSource[]): CacheSource =>
@@ -96,27 +113,32 @@ export async function nextDepartures(
   if (!stopArg) return { text: "Give a stop name or ID.", cache: "hit", isError: true };
   const limit = Math.min(10, Math.max(1, Math.trunc(Number.isFinite(args.limit) ? args.limit! : 5)));
 
+  const numericStop = /^\d+$/.test(stopArg);
+  let fallbackNote: string | undefined;
   const sources: CacheSource[] = [];
   let stopId: number;
   let stopName: string | undefined;
   let routeTypes: RouteType[];
-  if (/^\d+$/.test(stopArg)) {
+  if (numericStop) {
     stopId = Number(stopArg);
     routeTypes = args.mode ? ROUTE_TYPES[args.mode] : DEFAULT_ROUTE_TYPES;
   } else {
     let found;
     try {
-      found = await searchStops(ctx.client, ctx.static, ctx.rt, stopArg, args.mode);
+      found = await searchWithBusFallback(ctx, stopArg, args.mode);
     } catch (err) {
       return failure(err);
     }
     sources.push(found.source);
     const resolved = resolveStop(found.value, stopArg);
     if (resolved.kind === "none") return { text: noStops(stopArg, args.mode), cache: found.source };
+    const missed = `No train or tram stop matched “${stopArg}”, so`;
     if (resolved.kind === "many") {
       const list = resolved.candidates.map(describeStop).join("\n");
-      return { text: `Several stops match “${stopArg}”. Which one did you mean?\n${list}`, cache: found.source };
+      const note = found.busFallback ? `${missed} these are bus stops.\n` : "";
+      return { text: `${note}Several stops match “${stopArg}”. Which one did you mean?\n${list}`, cache: found.source };
     }
+    if (found.busFallback) fallbackNote = `${missed} this is a bus stop.`;
     stopId = resolved.stop.stopId;
     stopName = resolved.stop.name;
     routeTypes = [resolved.stop.routeType];
@@ -217,10 +239,11 @@ export async function nextDepartures(
   }
   deps = deps.slice(0, limit);
   const lines: string[] = [];
+  if (fallbackNote) lines.push(fallbackNote);
   if (dep.warning) lines.push(dep.warning);
 
   if (deps.length === 0) {
-    lines.push(`No upcoming services at ${stopName} ${label}.`);
+    lines.push(`No upcoming services at ${stopName} ${label}.${numericStop && !args.mode ? ' If this is a bus stop, pass mode "bus".' : ""}`);
     if (skipped.size) {
       lines.push(
         `Couldn't determine the city direction for: ${[...skipped].join(", ")}. Try a direction ID instead.`,
