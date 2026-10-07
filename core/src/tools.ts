@@ -4,13 +4,14 @@ import { getStopOrder, headsTowardCity, type RouteStopOrder } from "./stopOrder"
 import { PtvError, type PtvClient } from "./client";
 import {
   renderDeparture,
+  routeLabel,
   shapeDepartures,
   shapeDisruptions,
   type Departure,
   type PtvDeparturesResponse,
   type PtvDisruptionsResponse,
 } from "./departures";
-import { MODE_OF, ROUTE_TYPE, describeStop, resolveStop, searchStops, type Mode } from "./stops";
+import { DEFAULT_ROUTE_TYPES, MODE_OF, ROUTE_TYPES, describeStop, resolveStop, searchStops, type Mode, type RouteType } from "./stops";
 
 export interface ToolContext {
   client: PtvClient;
@@ -46,9 +47,12 @@ export async function findStop(
   } catch (err) {
     return failure(err);
   }
-  const text = res.value.length
-    ? res.value.map(describeStop).join("\n")
-    : `No stops found for “${args.query.trim()}”.`;
+  const MAX_LISTED = 10;
+  const lines = res.value.slice(0, MAX_LISTED).map(describeStop);
+  if (res.value.length > MAX_LISTED) {
+    lines.push(`…and ${res.value.length - MAX_LISTED} more. Add a mode or a fuller stop name to narrow the search.`);
+  }
+  const text = lines.length ? lines.join("\n") : `No stops found for “${args.query.trim()}”.`;
   return { text: res.warning ? `${res.warning}\n${text}` : text, cache: res.source };
 }
 
@@ -56,7 +60,7 @@ const SOURCE_ORDER: CacheSource[] = ["miss", "stale-fallback", "stale", "hit"];
 const summarise = (sources: CacheSource[]): CacheSource =>
   SOURCE_ORDER.find((s) => sources.includes(s)) ?? "hit";
 
-const departuresFor = (ctx: ToolContext, routeType: 0 | 1, stopId: number) =>
+const departuresFor = (ctx: ToolContext, routeType: RouteType, stopId: number) =>
   cached(
     ctx.live,
     `dep:${routeType}:${stopId}`,
@@ -91,10 +95,10 @@ export async function nextDepartures(
   const sources: CacheSource[] = [];
   let stopId: number;
   let stopName: string | undefined;
-  let routeTypes: Array<0 | 1>;
+  let routeTypes: RouteType[];
   if (/^\d+$/.test(stopArg)) {
     stopId = Number(stopArg);
-    routeTypes = args.mode ? [ROUTE_TYPE[args.mode]] : [0, 1];
+    routeTypes = args.mode ? ROUTE_TYPES[args.mode] : DEFAULT_ROUTE_TYPES;
   } else {
     let found;
     try {
@@ -115,7 +119,7 @@ export async function nextDepartures(
   }
 
   let dep!: Cached<PtvDeparturesResponse>;
-  let routeType: 0 | 1 = routeTypes[0]!;
+  let routeType: RouteType = routeTypes[0]!;
   let answered = false;
   let lastErr: unknown;
   for (const t of routeTypes) {
@@ -180,7 +184,7 @@ export async function nextDepartures(
       const order = orders.get(`${d.routeId}:${d.directionId}`);
       const toward = order ? headsTowardCity(order, stopId) : undefined;
       if (toward === undefined) {
-        skipped.add(d.routeNumber ? `Route ${d.routeNumber}` : d.line);
+        skipped.add(d.routeNumber ? routeLabel(d.routeNumber, d.routeType) : d.line);
         return false;
       }
       return direction === "city" ? toward : !toward;

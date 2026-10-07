@@ -3,7 +3,10 @@ import { findStop, nextDepartures, type ToolResult } from "@ptv/core";
 import { z } from "zod";
 import { toolContext } from "./runtime";
 
-const mode = z.enum(["train", "tram"]).optional().describe("Restrict to trains or trams");
+const mode = z
+  .enum(["train", "tram", "bus"])
+  .optional()
+  .describe("Trains and trams are searched by default; pass \"bus\" to search buses. Pass the mode with a numeric stop ID: IDs are only unique within a mode.");
 
 export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
   const server = new McpServer({ name: "ptv-mcp", version: "1.0.0" });
@@ -21,7 +24,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "find_stop",
     {
       description:
-        "Find Melbourne metro train stations and tram stops by name. Returns stop IDs, modes and the lines serving each stop.",
+        "Find Melbourne metro train stations, tram stops and bus stops by name. Returns stop IDs, modes and the lines serving each stop.",
       inputSchema: {
         query: z.string().describe("Stop or station name, e.g. 'Ascot Vale'"),
         mode,
@@ -34,7 +37,7 @@ export function buildServer(env: Env, ctx: ExecutionContext): McpServer {
     "next_departures",
     {
       description:
-        "Next train or tram departures from a stop, with live times where available. Defaults to services heading into the city and includes active disruptions.",
+        "Next train, tram or bus departures from a stop, with live times where available. Defaults to services heading into the city and includes active disruptions.",
       inputSchema: {
         stop: z.string().describe("Stop name or numeric stop ID"),
         mode,

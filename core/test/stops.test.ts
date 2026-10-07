@@ -64,12 +64,59 @@ describe("findStop", () => {
     expect(r.isError).toBeUndefined();
   });
 
-  it("keeps trains and trams, drops buses, and renders one line per stop", async () => {
+  it("by default lists trains and trams only, even if PTV sent a bus stop", async () => {
     const r = await findStop(ctx().c, { query: "Ascot Vale" });
     expect(r.text.split("\n")).toEqual([
       "Ascot Vale Station (train, Ascot Vale) id 1007: Craigieburn, Upfield",
       "Ascot Vale Rd/Union Rd #1 (tram, Ascot Vale) id 2001: Route 59",
     ]);
+  });
+
+  it("mode bus lists bus stops, labelled by bus number", async () => {
+    const r = await findStop(ctx().c, { query: "Ascot Vale", mode: "bus" });
+    expect(r.text).toBe("Ascot Vale Rd/Bus Stop (bus, Ascot Vale) id 3001: Bus 200");
+  });
+
+  it("sorts trains before trams regardless of PTV's order", async () => {
+    const resp = { stops: [
+      { stop_id: 3, stop_name: "T", route_type: 1, routes: [] },
+      { stop_id: 4, stop_name: "R", route_type: 0, routes: [] },
+    ] };
+    const r = await findStop(ctx(resp).c, { query: "x" });
+    expect(r.text.split("\n").map((l) => l.split(" ")[0])).toEqual(["R", "T"]);
+  });
+
+  it("mode bus includes night buses (route type 4)", async () => {
+    const resp = { stops: [
+      { stop_id: 1, stop_name: "Day", route_type: 2, routes: [] },
+      { stop_id: 2, stop_name: "Night", route_type: 4, routes: [] },
+    ] };
+    const r = await findStop(ctx(resp).c, { query: "x", mode: "bus" });
+    expect(r.text.split("\n").map((l) => l.split(" ")[0])).toEqual(["Day", "Night"]);
+  });
+
+  it("drops V/Line (route type 3)", async () => {
+    const resp = { stops: [{ stop_id: 1, stop_name: "Geelong", route_type: 3, routes: [] }] };
+    expect((await findStop(ctx(resp).c, { query: "Geelong" })).text).toBe("No stops found for “Geelong”.");
+  });
+
+  it("mode bus searches regular and night buses", async () => {
+    const a = ctx();
+    await findStop(a.c, { query: "Chapel St", mode: "bus" });
+    expect(a.queries[0]).toMatchObject({ route_types: [2, 4] });
+  });
+
+  it("with no mode searches trains and trams only", async () => {
+    const a = ctx();
+    await findStop(a.c, { query: "Chapel St" });
+    expect(a.queries[0]).toMatchObject({ route_types: [0, 1] });
+  });
+
+  it("caps the list at 10 and says how many more there are", async () => {
+    const resp = { stops: Array.from({ length: 13 }, (_, i) => ({ stop_id: i + 1, stop_name: `Stop ${i + 1}`, route_type: 1, routes: [] })) };
+    const lines = (await findStop(ctx(resp).c, { query: "Stop" })).text.split("\n");
+    expect(lines).toHaveLength(11);
+    expect(lines[10]).toBe("…and 3 more. Add a mode or a fuller stop name to narrow the search.");
   });
 
   it("restricts route types by mode", async () => {

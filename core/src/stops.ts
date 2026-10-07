@@ -1,14 +1,20 @@
 import { POLICIES, cached, type Cached, type CacheRuntime, type CacheStore } from "./cache";
 import type { PtvClient } from "./client";
+import { routeLabel } from "./departures";
 
-export type Mode = "train" | "tram";
-export const ROUTE_TYPE: Record<Mode, 0 | 1> = { train: 0, tram: 1 };
-export const MODE_OF: Record<0 | 1, Mode> = { 0: "train", 1: "tram" };
+export type Mode = "train" | "tram" | "bus";
+/** PTV route types we serve: 0 metro train, 1 tram, 2 bus, 4 night bus. V/Line (3) is out of scope. */
+export type RouteType = 0 | 1 | 2 | 4;
+export const ROUTE_TYPES: Record<Mode, RouteType[]> = { train: [0], tram: [1], bus: [2, 4] };
+/** What a search or numeric stop ID covers when no mode is given: buses need `mode: "bus"`. */
+export const DEFAULT_ROUTE_TYPES: RouteType[] = [0, 1];
+export const MODE_OF: Record<RouteType, Mode> = { 0: "train", 1: "tram", 2: "bus", 4: "bus" };
+const isRouteType = (t: number): t is RouteType => t === 0 || t === 1 || t === 2 || t === 4;
 
 export interface StopMatch {
   stopId: number;
   name: string;
-  routeType: 0 | 1;
+  routeType: RouteType;
   suburb: string | null;
   routes: string[];
 }
@@ -19,7 +25,7 @@ interface PtvSearchResponse {
     stop_name: string;
     stop_suburb?: string | null;
     route_type: number;
-    routes?: Array<{ route_name: string; route_number?: string | null }>;
+    routes?: Array<{ route_name: string; route_number?: string | null; route_type?: number }>;
   }>;
 }
 
@@ -46,7 +52,7 @@ export async function searchStops(
 ): Promise<Cached<StopMatch[]>> {
   const [term, ...others] = queryParts(query);
   if (term === undefined) return { value: [], source: "hit" };
-  const routeTypes = mode ? [ROUTE_TYPE[mode]] : [0, 1];
+  const routeTypes = mode ? ROUTE_TYPES[mode] : DEFAULT_ROUTE_TYPES;
   const key = `search:${normaliseTerm(query)}:${mode ?? "any"}`;
   const res = await cached(
     store,
@@ -61,14 +67,17 @@ export async function searchStops(
     rt,
   );
   let value = (res.value.stops ?? [])
-    .filter((s): s is typeof s & { route_type: 0 | 1 } => s.route_type === 0 || s.route_type === 1)
+    .filter((s): s is typeof s & { route_type: RouteType } => isRouteType(s.route_type) && routeTypes.includes(s.route_type))
     .map((s) => ({
       stopId: s.stop_id,
       name: s.stop_name.trim(),
       routeType: s.route_type,
       suburb: s.stop_suburb ?? null,
-      routes: (s.routes ?? []).map((r) => (r.route_number ? `Route ${r.route_number}` : r.route_name)),
+      routes: (s.routes ?? []).map((r) => (r.route_number ? routeLabel(r.route_number, r.route_type) : r.route_name)),
     }));
+  // Trains first, then trams, then buses (stable, so PTV's order is kept within a mode).
+  const rank = (t: RouteType) => (t === 0 ? 0 : t === 1 ? 1 : 2);
+  value = value.map((m, i) => ({ m, i })).sort((a, b) => rank(a.m.routeType) - rank(b.m.routeType) || a.i - b.i).map((x) => x.m);
   if (others.length) {
     const wanted = others.map((o) => o.toLowerCase());
     const narrowed = value.filter((m) => wanted.every((w) => m.name.toLowerCase().includes(w)));

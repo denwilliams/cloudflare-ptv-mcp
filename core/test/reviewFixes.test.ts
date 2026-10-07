@@ -5,8 +5,8 @@ import { findStop, nextDepartures, PTV_DOWN, type ToolContext } from "../src/too
 
 const NOW = Date.parse("2026-07-15T22:30:00Z");
 const rt: CacheRuntime = { now: () => NOW, defer: () => {} };
-const mk = (get: (path: string) => unknown): ToolContext => ({
-  client: { get: async <T>(p: string) => get(p) as T } as PtvClient,
+const mk = (get: (path: string, query?: unknown) => unknown): ToolContext => ({
+  client: { get: async <T>(p: string, q?: unknown) => get(p, q) as T } as PtvClient,
   live: new MemoryCacheStore(() => NOW),
   static: new MemoryCacheStore(() => NOW),
   rt,
@@ -101,5 +101,45 @@ describe("real-data finding: PTV max_results applies per route and direction", (
     ctx.client.get = (async (path: string, q?: { expand?: string[] }) => { if (path.startsWith("/v3/departures")) queries.push(q ?? {}); return get(path); }) as PtvClient["get"];
     await nextDepartures(ctx, { stop: "1007", mode: "train", direction: "50" });
     expect(queries[0]!.expand).toContain("Stop");
+  });
+});
+
+describe("buses", () => {
+  const route = { "9": { route_name: "City (Queen Victoria Market) - Gardenvale", route_number: "605", route_type: 2 } };
+  const busDeps = { departures: [dep({}, 9, "A", 4), dep({}, 9, "B", 9)], routes: route, runs: { A: { destination_name: "Gardenvale" }, B: { destination_name: "City" } } };
+  it("labels buses as Bus <number>", async () => {
+    const ctx = mk((p) => (p.startsWith("/v3/departures") ? busDeps : { disruptions: {} }));
+    const r = await nextDepartures(ctx, { stop: "18479", mode: "bus", direction: "50" });
+    expect(r.text).toContain("Bus 605 → Gardenvale: 4 min (scheduled)");
+  });
+  it("with mode bus a numeric id tries regular then night buses", async () => {
+    const paths: string[] = [];
+    const ctx = mk((p) => { paths.push(p); if (p.includes("route_type/2")) return { departures: [] }; if (p.includes("route_type/4")) return busDeps; return { disruptions: {} }; });
+    const r = await nextDepartures(ctx, { stop: "18479", mode: "bus", direction: "50" });
+    expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual(["/v3/departures/route_type/2/stop/18479", "/v3/departures/route_type/4/stop/18479"]);
+    expect(r.text).toContain("(bus) in direction 50:");
+  });
+  it("without a mode a numeric id only tries trains and trams, never buses", async () => {
+    const paths: string[] = [];
+    const ctx = mk((p) => { paths.push(p); return p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }; });
+    await nextDepartures(ctx, { stop: "18479", direction: "50" });
+    expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual(["/v3/departures/route_type/0/stop/18479", "/v3/departures/route_type/1/stop/18479"]);
+  });
+  it("finds the city direction for a bus from its stop order, never via the all-routes build", async () => {
+    const paths: string[] = [];
+    const order = (stopSeq: number) => ({ stops: [{ stop_id: 18479, stop_sequence: stopSeq, stop_suburb: "Elwood" }, { stop_id: 1, stop_sequence: 5, stop_suburb: "Melbourne City" }, { stop_id: 2, stop_sequence: 6, stop_suburb: "Melbourne City" }] });
+    const resp = { departures: [{ ...dep({}, 9, "A", 4), direction_id: 50 }, { ...dep({}, 9, "B", 9), direction_id: 51 }], routes: route, runs: { A: { destination_name: "City" }, B: { destination_name: "Gardenvale" } } };
+    const ctx = mk((p, q) => {
+      paths.push(p);
+      if (p.startsWith("/v3/departures")) return resp;
+      if (p === "/v3/disruptions") return { disruptions: {} };
+      if (p === "/v3/routes") return { routes: [] };
+      if (p === "/v3/stops/route/9/route_type/2") return (q as { direction_id: number }).direction_id === 50 ? order(2) : order(9);
+      throw new Error(`unexpected ${p}`);
+    });
+    const r = await nextDepartures(ctx, { stop: "18479", mode: "bus" });
+    expect(r.text).toContain("Bus 605 → City");
+    expect(r.text).not.toContain("Gardenvale");
+    expect(paths.filter((p) => p.startsWith("/v3/routes")).every((p) => p === "/v3/routes")).toBe(true);
   });
 });

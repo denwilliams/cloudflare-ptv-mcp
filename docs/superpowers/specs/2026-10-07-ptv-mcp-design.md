@@ -4,7 +4,7 @@ Refines `SPEC.md`. Where the two differ, this document wins. Everything not ment
 
 ## Goal
 
-A remote (Streamable HTTP) MCP server on a Cloudflare Worker that gives LOKE's Melbourne staff live and scheduled PTV train and tram departures, usable from Claude web and mobile and from voice agents. Metro trains and trams only, with the CBD as the default destination.
+A remote (Streamable HTTP) MCP server on a Cloudflare Worker that gives LOKE's Melbourne staff live and scheduled PTV train and tram departures, usable from Claude web and mobile and from voice agents. Metro trains and trams by default, with the CBD as the default destination. Buses (regular and night) are available with `mode: "bus"` (added after v1). V/Line stays out of scope.
 
 ## Tools
 
@@ -12,7 +12,7 @@ The `SPEC.md` set of five is cut to two. Fewer tools means fewer round trips and
 
 ### `find_stop(query, mode?)`
 
-Resolves a name to stops. Calls `/v3/search/{term}`, restricted to metro train and tram.
+Resolves a name to stops. Calls `/v3/search/{term}`, restricted to metro train and tram by default, or to regular and night buses with `mode: "bus"`. Results are sorted trains, then trams, then buses and capped at 10.
 Returns, per match: stop ID, name, mode, and the routes serving it.
 
 ### `next_departures(stop, mode?, route?, direction?, limit = 5)`
@@ -71,4 +71,4 @@ One implementation plan, in this order:
 
 ## Open questions carried over
 
-Destination definition (CBD in general or nearest stop to the office), PTV's published rate limit, key ownership, and cross-city tram directions. The plan assumes "CBD in general" and excludes both directions on cross-city tram routes. Buses and V/Line stay out of scope. A saved home stop is dropped, since it needed per-user identity that no longer exists.
+Destination definition (CBD in general or nearest stop to the office), PTV's published rate limit, key ownership, and cross-city tram directions. The plan assumes "CBD in general" and excludes both directions on cross-city tram routes. V/Line stays out of scope. Buses are opt-in via `mode: "bus"`; their city direction always comes from the lazy stop-order lookup, never the daily `city_routes` build (706 bus routes). A saved home stop is dropped, since it needed per-user identity that no longer exists.

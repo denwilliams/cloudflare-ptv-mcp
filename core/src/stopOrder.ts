@@ -1,5 +1,6 @@
 import { POLICIES, cached, type CacheRuntime, type CacheStore } from "./cache";
 import type { PtvClient } from "./client";
+import type { RouteType } from "./stops";
 
 /** Where one direction of a route visits each stop, and which of those stops are in the CBD. */
 export interface RouteStopOrder {
@@ -21,7 +22,7 @@ export async function getStopOrder(
   store: CacheStore,
   rt: CacheRuntime,
   routeId: number,
-  routeType: 0 | 1,
+  routeType: RouteType,
   directionId: number,
 ): Promise<RouteStopOrder> {
   const res = await cached(
