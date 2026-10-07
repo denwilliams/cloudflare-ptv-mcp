@@ -119,11 +119,35 @@ describe("buses", () => {
     expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual(["/v3/departures/route_type/2/stop/18479", "/v3/departures/route_type/4/stop/18479"]);
     expect(r.text).toContain("(bus) in direction 50:");
   });
-  it("without a mode a numeric id only tries trains and trams, never buses", async () => {
+  it("without a mode a numeric id tries trains and trams first, buses only if those have no services", async () => {
     const paths: string[] = [];
     const ctx = mk((p) => { paths.push(p); return p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }; });
     await nextDepartures(ctx, { stop: "18479", direction: "50" });
-    expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual(["/v3/departures/route_type/0/stop/18479", "/v3/departures/route_type/1/stop/18479"]);
+    expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual([
+      "/v3/departures/route_type/0/stop/18479", "/v3/departures/route_type/1/stop/18479",
+      "/v3/departures/route_type/2/stop/18479", "/v3/departures/route_type/4/stop/18479",
+    ]);
+  });
+  it("uses the bus stop with that id when only buses have services, and says so", async () => {
+    const ctx = mk((p) => {
+      if (p.startsWith("/v3/departures/route_type/2/")) return busDeps;
+      return p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} };
+    });
+    const r = await nextDepartures(ctx, { stop: "18479", direction: "50" });
+    expect(r.text.split("\n")[0]).toBe("No train or tram stop with ID 18479 had services, so this is the bus stop with that ID.");
+    expect(r.text).toContain("Bus 605 → Gardenvale: 4 min (scheduled)");
+  });
+  it("never tries buses when a train or tram stop with that id has services", async () => {
+    const paths: string[] = [];
+    const ctx = mk((p) => { paths.push(p); return p.startsWith("/v3/departures/route_type/0/") ? busDeps : p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }; });
+    await nextDepartures(ctx, { stop: "1007", direction: "50" });
+    expect(paths.some((p) => p.includes("route_type/2") || p.includes("route_type/4"))).toBe(false);
+  });
+  it("does not try buses when a mode was given", async () => {
+    const paths: string[] = [];
+    const ctx = mk((p) => { paths.push(p); return p.startsWith("/v3/departures") ? { departures: [] } : { disruptions: {} }; });
+    await nextDepartures(ctx, { stop: "1007", mode: "train", direction: "50" });
+    expect(paths.filter((p) => p.startsWith("/v3/departures"))).toEqual(["/v3/departures/route_type/0/stop/1007"]);
   });
   it("finds the city direction for a bus from its stop order, never via the all-routes build", async () => {
     const paths: string[] = [];

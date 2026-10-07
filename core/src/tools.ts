@@ -67,10 +67,10 @@ const noStops = (query: string, mode?: Mode) =>
  */
 async function searchWithBusFallback(ctx: ToolContext, query: string, mode?: Mode) {
   const res = await searchStops(ctx.client, ctx.static, ctx.rt, query, mode);
-  if (mode || res.value.length > 0) return { ...res, busFallback: false };
+  if (mode || (res.value.length > 0 && !res.loose)) return { ...res, busFallback: false };
   try {
     const bus = await searchStops(ctx.client, ctx.static, ctx.rt, query, "bus");
-    if (bus.value.length > 0) return { ...bus, busFallback: true };
+    if (bus.value.length > 0 && !bus.loose) return { ...bus, busFallback: true };
   } catch {
     // The bus search is a courtesy; fall through to the original empty result.
   }
@@ -160,6 +160,24 @@ export async function nextDepartures(
       if (hasServices) break;
     } catch (err) {
       lastErr = err; // try the next route type before giving up
+    }
+  }
+  // A numeric ID with no mode may be a bus stop (callers, especially stale clients, often omit
+  // the mode). Only look at buses when no train or tram stop with that ID has services, and say so.
+  if (numericStop && !args.mode && !(answered && dep.value.departures.length > 0)) {
+    for (const t of ROUTE_TYPES.bus) {
+      try {
+        const d = await departuresFor(ctx, t, stopId);
+        if (d.value.departures.length > 0) {
+          dep = d;
+          routeType = t;
+          answered = true;
+          fallbackNote = `No train or tram stop with ID ${stopId} had services, so this is the bus stop with that ID.`;
+          break;
+        }
+      } catch {
+        // ignore: report the train/tram result below
+      }
     }
   }
   if (!answered) return failure(lastErr);

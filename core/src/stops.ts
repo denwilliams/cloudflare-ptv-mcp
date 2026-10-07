@@ -49,9 +49,9 @@ export async function searchStops(
   rt: CacheRuntime,
   query: string,
   mode?: Mode,
-): Promise<Cached<StopMatch[]>> {
+): Promise<Cached<StopMatch[]> & { loose: boolean }> {
   const [term, ...others] = queryParts(query);
-  if (term === undefined) return { value: [], source: "hit" };
+  if (term === undefined) return { value: [], source: "hit", loose: false };
   const routeTypes = mode ? ROUTE_TYPES[mode] : DEFAULT_ROUTE_TYPES;
   const key = `search:${normaliseTerm(query)}:${mode ?? "any"}`;
   const res = await cached(
@@ -75,6 +75,8 @@ export async function searchStops(
       suburb: s.stop_suburb ?? null,
       routes: (s.routes ?? []).map((r) => (r.route_number ? routeLabel(r.route_number, r.route_type) : r.route_name)),
     }));
+  // loose: a cross-street name matched only its first street, so these results may be the wrong stops.
+  let loose = false;
   // Trains first, then trams, then buses (stable, so PTV's order is kept within a mode).
   const rank = (t: RouteType) => (t === 0 ? 0 : t === 1 ? 1 : 2);
   value = value.map((m, i) => ({ m, i })).sort((a, b) => rank(a.m.routeType) - rank(b.m.routeType) || a.i - b.i).map((x) => x.m);
@@ -82,8 +84,9 @@ export async function searchStops(
     const wanted = others.map((o) => o.toLowerCase());
     const narrowed = value.filter((m) => wanted.every((w) => m.name.toLowerCase().includes(w)));
     if (narrowed.length) value = narrowed;
+    else loose = true;
   }
-  return { ...res, value };
+  return { ...res, value, loose };
 }
 
 const normaliseName = (s: string) =>

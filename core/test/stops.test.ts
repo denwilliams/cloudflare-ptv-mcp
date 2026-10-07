@@ -158,6 +158,22 @@ describe("findStop falls back to buses when no train or tram matches", () => {
     ]);
     expect(r.isError).toBeUndefined();
   });
+  it("tries buses when a cross-street name only matches the first street on trains and trams", async () => {
+    const trams = { stops: [{ stop_id: 3504, stop_name: "Epsom Rd/Maribyrnong Rd #40", route_type: 1, routes: [] }] };
+    const t = split(trams, busResp);
+    const r = await findStop(t.c, { query: "Epsom Rd/Mirams St" });
+    expect(t.types).toEqual([[0, 1], [2, 4]]);
+    expect(r.text.split("\n")).toEqual([
+      "No train or tram stops matched “Epsom Rd/Mirams St”, so these are bus stops.",
+      "Epsom Rd/Mirams St (bus, Ascot Vale) id 22266: Bus 472",
+    ]);
+  });
+  it("keeps the same-street train/tram results when the buses don't match the cross street either", async () => {
+    const trams = { stops: [{ stop_id: 3504, stop_name: "Epsom Rd/Maribyrnong Rd #40", route_type: 1, routes: [] }] };
+    const t = split(trams, { stops: [{ stop_id: 9, stop_name: "Epsom Rd/Other St", route_type: 2, routes: [] }] });
+    const r = await findStop(t.c, { query: "Epsom Rd/Nowhere St" });
+    expect(r.text).toBe("Epsom Rd/Maribyrnong Rd #40 (tram) id 3504");
+  });
   it("does not search buses when a train or tram matches", async () => {
     const t = split(search, busResp);
     await findStop(t.c, { query: "Ascot Vale" });
