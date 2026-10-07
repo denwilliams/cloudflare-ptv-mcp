@@ -1,9 +1,16 @@
 {
   "name": "cloudflare-ptv-mcp",
   "private": true,
-  "workspaces": ["core", "worker"],
+  "type": "module",
+  "workspaces": [
+    "core",
+    "worker"
+  ],
   "scripts": {
     "test": "npm test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
   }
 }
