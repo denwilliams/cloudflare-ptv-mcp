@@ -10,6 +10,7 @@ export interface PtvDeparturesResponse {
     platform_number: string | null;
     disruption_ids: number[];
   }>;
+  stops?: Record<string, { stop_name?: string }>;
   routes?: Record<string, { route_name: string }>;
   directions?: Record<string, { direction_name: string }>;
   runs?: Record<string, { destination_name?: string }>;
